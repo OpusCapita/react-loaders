@@ -1,0 +1,68 @@
+{
+  "name": "opuscapita-react-loaders",
+  "version": "0.0.1",
+  "description": "Start write new project with no effort.",
+  "scripts": {
+    "build": "rimraf lib && babel --copy-files --no-babelrc --presets es2015,stage-0,react --plugins transform-decorators-legacy --ignore __tests__,*.spec.js,demo src/client/components --out-dir lib",
+    "link-mode": "webpack --watch --config ./webpack.link.config.js",
+    "lint": "eslint src/client",
+    "prepublish": "npm run build",
+    "start": "node www/index",
+    "test": "mocha"
+  },
+  "author": {
+    "name": "Kirill Volkovich",
+    "email": "kirill.volkovich@jcatalog.com"
+  },
+  "main": "lib/index.js",
+  "files": [
+    "lib",
+    "README.md"
+  ],
+  "license": "jCatalog",
+  "readme": "README.md",
+  "peerDependencies": {
+    "react": "0.14.8",
+    "react-dom": "0.14.8"
+  },
+  "devDependencies": {
+    "autoprefixer": "^6.4.1",
+    "babel-cli": "6.5.1",
+    "babel-core": "6.4.0",
+    "babel-eslint": "6.0.4",
+    "babel-loader": "6.2.1",
+    "babel-plugin-transform-decorators-legacy": "1.3.4",
+    "babel-plugin-transform-object-assign": "^6.8.0",
+    "babel-preset-es2015": "6.3.13",
+    "babel-preset-react": "6.3.13",
+    "babel-preset-stage-0": "6.3.13",
+    "babel-register": "6.5.2",
+    "babel-standalone": "6.14.0",
+    "compression": "^1.6.2",
+    "cross-env": "1.0.7",
+    "css-loader": "0.21.0",
+    "enzyme": "^2.7.1",
+    "eslint": "2.11.0",
+    "eslint-config-jcatalog": "1.0.2",
+    "eslint-plugin-react": "5.1.1",
+    "express": "4.13.4",
+    "file-loader": "^0.9.0",
+    "jcatalog-showroom": "^1.0.3",
+    "jcatalog-showroom-server": "^1.0.1",
+    "json-loader": "0.5.4",
+    "less": "^2.3.1",
+    "less-loader": "2.2.2",
+    "mocha": "^3.2.0",
+    "nodemon": "1.9.1",
+    "postcss-loader": "^0.13.0",
+    "postcss-modules": "^0.5.2",
+    "raw-loader": "0.5.1",
+    "rimraf": "2.5.2",
+    "source-map-loader": "0.1.5",
+    "style-loader": "0.13.1",
+    "url-loader": "0.5.7",
+    "webpack": "^1.12.2",
+    "webpack-dev-middleware": "^1.5.1",
+    "write-file-webpack-plugin": "^3.3.0"
+  }
+}
