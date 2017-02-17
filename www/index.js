@@ -12,7 +12,7 @@ const compiler = webpack(require('../webpack.development.config'));
 const app = express();
 
 let componentsRoot = path.resolve(__dirname, '../src/client/components');
-require('jcatalog-showroom-server').makeLocalScan(componentsRoot);
+require('opuscapita-showroom-server').makeLocalScan(componentsRoot);
 
 const babelrc = fs.readFileSync(path.join(__dirname, '../.babelrc'));
 let config;
