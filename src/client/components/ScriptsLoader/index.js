@@ -1,1 +1,1 @@
-export default require('./SyncLoader.react').default;
+export default require('./ScriptsLoader.react').default;

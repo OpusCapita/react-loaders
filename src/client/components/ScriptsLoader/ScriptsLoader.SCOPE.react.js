@@ -7,7 +7,11 @@ class ScriptsLoaderScope extends Component {
     super(props);
     this.state = {
       mountLoader: true,
-      loaderState: {}
+      loaderState: {
+        loading: [],
+        succesed: [],
+        failed: []
+      }
     };
   }
 
@@ -29,15 +33,15 @@ class ScriptsLoaderScope extends Component {
         <div>
           <div>
             <strong>Loading: </strong>
-            <span>{loaderState.loading}</span>
+            {loaderState.loading.map(val => (<span key={val}>&nbsp;{val}</span>))}
           </div>
           <div>
-            <strong>Success: </strong>
-            <span>{loaderState.succesed}</span>
+            <strong>Succesed: </strong>
+            {loaderState.succesed.map(val => (<span key={val}>&nbsp;{val}</span>))}
           </div>
           <div>
             <strong>Failed: </strong>
-            <span>{loaderState.failed}</span>
+            {loaderState.failed.map(val => (<span key={val}>&nbsp;{val}</span>))}
           </div>
         </div>
         {this.state.mountLoader && this._renderChildren()}

@@ -8,7 +8,9 @@ ScriptsLoader is
 ```
 <ScriptsLoader
   scripts={{
-    supplierBundle: 'http://test.jcatalog.com/dev-proc/sim/gateway/bundle/supplier.js'
+    supplierBundle: 'http://test.jcatalog.com/dev-proc/sim/gateway/bundle/supplier.js',
+    momentjs: 'https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.17.1/moment.js',
+    jquery: 'https://code.jquery.com/jquery-3.1.1.js'
   }}
   onChange={_scope.handleChange.bind(_scope)}
 />
