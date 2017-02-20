@@ -7,11 +7,11 @@ ScriptsLoaderContainer is
 
 ```
 <ScriptsLoaderContainer
-  scripts={{
-    supplierBundle: 'http://test.jcatalog.com/dev-proc/sim/gateway/bundle/supplier.js',
-    momentjs: 'https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.17.1/moment.js',
-    jquery: 'https://code.jquery.com/jquery-3.1.1.js'
-  }}
+  scripts={[
+    'https://cdnjs.cloudflare.com/ajax/libs/rxjs/5.0.1/Rx.js',
+    'https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.17.1/moment.js',
+    'https://code.jquery.com/jquery-3.1.1.js'
+  ]}
 >
   <h3>Content</h3>
   <p>

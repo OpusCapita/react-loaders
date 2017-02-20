@@ -9,8 +9,8 @@ class ScriptsLoaderScope extends Component {
       mountLoader: true,
       loaderState: {
         loading: [],
-        succesed: [],
-        failed: []
+        success: [],
+        failure: []
       }
     };
   }
@@ -25,6 +25,7 @@ class ScriptsLoaderScope extends Component {
 
   render() {
     let { loaderState } = this.state;
+    console.log('state', loaderState);
     return (
       <div>
         <button onClick={this.handleToggleMountLoader.bind(this)}>
@@ -33,15 +34,15 @@ class ScriptsLoaderScope extends Component {
         <div>
           <div>
             <strong>Loading: </strong>
-            {loaderState.loading.map(val => (<span key={val}>&nbsp;{val}</span>))}
+            {loaderState.loading.map((val, index) => (<span key={val+index}>&nbsp;{val}</span>))}
           </div>
           <div>
             <strong>Succesed: </strong>
-            {loaderState.succesed.map(val => (<span key={val}>&nbsp;{val}</span>))}
+            {loaderState.success.map((val, index) => (<span key={val+index}>&nbsp;{val}</span>))}
           </div>
           <div>
             <strong>Failed: </strong>
-            {loaderState.failed.map(val => (<span key={val}>&nbsp;{val}</span>))}
+            {loaderState.failure.map((val, index) => (<span key={val+index}>&nbsp;{val}</span>))}
           </div>
         </div>
         {this.state.mountLoader && this._renderChildren()}

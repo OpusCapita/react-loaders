@@ -6,25 +6,24 @@ class ScriptsLoader extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      scriptElements: {},
-      loading: [],
-      succesed: [],
-      failed: [],
+      errorListeners: {},
+      failure: [],
       loadListeners: {},
-      errorListeners: {}
+      loading: [],
+      scriptDOMElements: {},
+      success: []
     };
   }
 
   componentDidMount() {
-    let createScriptsState = this.createScripts(this.props.scripts, this.state);
-    this.handleOnChange(createScriptsState);
-    this.setState(createScriptsState);
+    let nextState = this.createScripts(this.props.scripts, this.state);
+    this.handleOnChange(nextState);
+    this.setState(nextState);
   }
 
   componentWillUnmount() {
-    let removeScriptsState = this.removeScripts(this.props.scripts, this.state);
-    this.handleOnChange(removeScriptsState);
-    this.setState(removeScriptsState);
+    let nextState = this.removeScripts(this.props.scripts, this.state);
+    this.handleOnChange(nextState);
   }
 
   componentWillReceiveProps(nextProps) {
@@ -32,147 +31,119 @@ class ScriptsLoader extends Component {
       let scriptsToRemove = this.getScriptsToRemove(this.props.scripts, nextProps.scripts);
       let scriptsToCreate = this.getScriptsToCreate(this.props.scripts, nextProps.scripts);
 
-      let removeScriptsState = this.removeScripts(scriptsToRemove, this.state);
-      let createScriptsState = this.createScripts(scriptsToCreate, removeScriptsState);
+      console.log('to remove:', scriptsToRemove);
+      console.log('to create:', scriptsToCreate);
 
-      this.handleOnChange(createScriptsState);
-      this.setState(createScriptsState);
+      let nextState = this.removeScripts(scriptsToRemove, this.state);
+      nextState = this.createScripts(scriptsToCreate, nextState);
+
+      this.handleOnChange(nextState);
+      this.setState(nextState);
     }
   }
 
   getScriptsToRemove(prevScripts, nextScripts) {
-    return Object.keys(prevScripts).reduce(
-      (result, scriptName) => {
-        if(
-          !Object.keys(nextScripts)[scriptName] ||
-          Object.keys(nextScripts)[scriptName] !== Object.keys(prevScripts)[scriptName]
-        ) {
-          return Object.assign({}, result, { [scriptName]: prevScripts[scriptName] });
-        }
-        return result;
-      }, {}
-    );
+    return prevScripts.filter(prevScript => nextScripts.indexOf(prevScript) === -1);
   }
 
   getScriptsToCreate(prevScripts, nextScripts) {
-    return Object.keys(nextScripts).reduce(
-      (result, scriptName) => {
-        if(
-          !Object.keys(prevScripts)[scriptName] ||
-          Object.keys(prevScripts)[scriptName] !== Object.keys(nextScripts)[scriptName]
-        ) {
-          return Object.assign({}, result, { [scriptName]: nextScripts[scriptName] });
-        }
-        return result;
-      }, {}
-    );
+    return nextScripts.filter(nextScript => prevScripts.indexOf(nextScripts) === -1);
   }
 
   createScripts(scripts, state) {
-    return Object.keys(scripts).reduce(
-      (accumulatedState, scriptName) => this.createScript(scriptName, scripts[scriptName], accumulatedState),
-      state
-    );
+    return scripts.reduce((result, script) => this.createScript(script, result), state);
   }
 
   removeScripts(scripts, state) {
-    return Object.keys(scripts).reduce(
-      (accumulatedState, scriptName) => this.removeScript(scriptName, accumulatedState),
-      state
-    );
+    return scripts.reduce((result, script) => this.removeScript(script, result), state);
   }
 
-  createScript(scriptName, scriptSrc, state) {
-    let scriptElement = document.createElement('script');
-    scriptElement.src = scriptSrc;
+  createScript(script, state) {
+    let loadListener = () => this.handleLoad(script);
+    let errorListener = () => this.handleError(script);
 
-    let loadListener = () => this.handleLoad(scriptName);
-    let errorListener = () => this.handleError(scriptName);
-    scriptElement.addEventListener('load', loadListener);
-    scriptElement.addEventListener('error', errorListener);
+    let scriptDOMElement = document.createElement('script');
+    scriptDOMElement.addEventListener('load', loadListener);
+    scriptDOMElement.addEventListener('error', errorListener);
+    scriptDOMElement.src = script;
+    document.head.appendChild(scriptDOMElement);
 
-    let nextState = {
+    return ({
       ...state,
-      scriptElements: Object.assign({}, state.scriptElements, { [scriptName]: scriptElement }),
-      loadListeners: Object.assign({}, state.loadListeners, { [scriptName]: loadListener }),
-      errorListeners: Object.assign({}, state.errorListeners, { [scriptName]: errorListener }),
-      loading: state.loading.concat([ scriptName ])
-    };
-    document.head.appendChild(scriptElement);
-    return nextState;
+      errorListeners: Object.assign({}, state.errorListeners, { [script]: errorListener }),
+      loadListeners: Object.assign({}, state.loadListeners, { [script]: loadListener }),
+      loading: state.loading.concat([ script ]),
+      scriptDOMElements: Object.assign({}, state.scriptDOMElements, { [script]: scriptDOMElement })
+    });
   }
 
-  isSuccesed(scriptName) {
-    return this.state.succesed.filter(succesedScriptName => succesedScriptName === scriptName).length;
+  isSuccess(script) {
+    return this.state.success.filter(successScript => successScript === script).length;
   }
 
-  isFailed(scriptName) {
-    return this.state.failed.filter(succesedScriptName => succesedScriptName === scriptName).length;
+  isFailure(script) {
+    return this.state.failure.filter(successScript => successScript === script).length;
   }
 
-  removeScript(scriptName, state) {
-    let scriptElement = state.scriptElements[scriptName];
+  removeScript(script, state) {
+    let scriptDOMElement = state.scriptDOMElements[script];
+    scriptDOMElement.removeEventListener('load', state.loadListeners[script]);
+    scriptDOMElement.removeEventListener('error', state.errorListeners[script]);
+    document.head.removeChild(scriptDOMElement);
 
-    scriptElement.removeEventListener('load', state.loadListeners[scriptName]);
-    scriptElement.removeEventListener('error', state.errorListeners[scriptName]);
-
-    let nextState = {
+    console.log('success:', state.success.filter(successScript => successScript !== script));
+    return ({
       ...state,
-      scriptElements: Object.assign({}, state.scriptElements, { [scriptName]: undefined }),
-      loadListeners: Object.assign({}, state.loadListeners, { [scriptName]: undefined }),
-      errorListeners: Object.assign({}, state.errorListeners, { [scriptName]: undefined }),
-      loading: state.loading.filter(loadingScriptName => loadingScriptName !== scriptName ),
-      succesed: state.succesed.filter(succesedScriptName => succesedScriptName !== scriptName ),
-      failed: state.failed.filter(failedScriptName => failedScriptName !== scriptName )
-    };
-    document.head.removeChild(scriptElement);
-    return nextState;
+      errorListeners: Object.assign({}, state.errorListeners, { [script]: undefined }),
+      failure: state.failure.filter(failureScript => failureScript !== script),
+      loadListeners: Object.assign({}, state.loadListeners, { [script]: undefined }),
+      loading: state.loading.filter(loadingScript => loadingScript !== script),
+      scriptDOMElements: Object.assign({}, state.scriptDOMElements, { [script]: undefined }),
+      success: state.success.filter(successScript => successScript !== script)
+    });
   }
 
   handleOnChange(state) {
     this.props.onChange({
       loading: state.loading,
-      succesed: state.succesed,
-      failed: state.failed
+      success: state.success,
+      failure: state.failure
     });
   }
 
-  handleLoad(scriptName) {
+  handleLoad(script) {
+    console.log('load:', script);
     let nextState = {
       ...this.state,
-      failed: this.state.failed.filter(failedScriptName => failedScriptName !== scriptName),
-      loading: this.state.loading.filter(loadingScriptName => loadingScriptName !== scriptName),
-      succesed: this.state.succesed.concat([ scriptName ])
+      failure: this.state.failure.filter(failureScript => failureScript !== script),
+      loading: this.state.loading.filter(loadingScript => loadingScript !== script),
+      success: this.state.success.concat([ script ])
     };
-    console.log('load:::', nextState);
     this.handleOnChange(nextState);
     this.setState(nextState);
   }
 
-  handleError(scriptName) {
+  handleError(script) {
     let nextState = {
       ...this.state,
-      failed: this.state.failed.concat([ scriptName ]),
-      loading: this.state.loading.filter(loadingScriptName => loadingScriptName !== scriptName),
-      succesed: this.state.succesed.filter(succesedScriptName => succesedScriptName !== scriptName)
+      failure: this.state.failure.concat([ script ]),
+      loading: this.state.loading.filter(loadingScript => loadingScript !== script),
+      success: this.state.success.filter(successScript => successScript !== script)
     };
-
-    console.log('error:::', nextState);
     this.handleOnChange(nextState);
     this.setState(nextState);
   }
 
   render() {
-    console.log(this.state);
     return null;
   }
 }
 
 ScriptsLoader.propTypes = {
-  scripts: PropTypes.object,
+  scripts: PropTypes.array,
   onChange: PropTypes.func
 };
 ScriptsLoader.defaultProps = {
-  scripts: {},
+  scripts: [],
   onChange: () => {}
 };

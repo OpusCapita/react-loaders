@@ -15,10 +15,6 @@ class ScriptsLoaderContainer extends Component {
     };
   }
 
-  getScriptSrc(src) {
-    return this.props.serviceRegistry(scr);
-  }
-
   handleLoaderChange(loaderState) {
     this.setState({ loaderState });
   }
@@ -57,14 +53,12 @@ class ScriptsLoaderContainer extends Component {
 }
 
 ScriptsLoaderContainer.propTypes = {
-  serviceRegistry: PropTypes.func,
-  scripts: PropTypes.object,
   getSpinnerComponent: PropTypes.func,
-  getErrorComponent: PropTypes.func
+  getErrorComponent: PropTypes.func,
+  scripts: PropTypes.object
 };
 ScriptsLoaderContainer.defaultProps = {
-  serviceRegistry: () => {},
-  scripts: {},
   getSpinnerComponent: (scriptNames) => (<span>Loading ... {scriptNames}</span>),
-  getErrorComponent: (scriptNames) => (<span>Error ... {scriptNames}</span>)
+  getErrorComponent: (scriptNames) => (<span>Error ... {scriptNames}</span>),
+  scripts: {}
 };
