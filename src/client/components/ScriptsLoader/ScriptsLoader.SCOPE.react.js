@@ -25,7 +25,6 @@ class ScriptsLoaderScope extends Component {
 
   render() {
     let { loaderState } = this.state;
-    console.log('state', loaderState);
     return (
       <div>
         <button onClick={this.handleToggleMountLoader.bind(this)}>

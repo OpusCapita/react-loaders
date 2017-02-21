@@ -31,9 +31,6 @@ class ScriptsLoader extends Component {
       let scriptsToRemove = this.getScriptsToRemove(this.props.scripts, nextProps.scripts);
       let scriptsToCreate = this.getScriptsToCreate(this.props.scripts, nextProps.scripts);
 
-      console.log('to remove:', scriptsToRemove);
-      console.log('to create:', scriptsToCreate);
-
       let nextState = this.removeScripts(scriptsToRemove, this.state);
       nextState = this.createScripts(scriptsToCreate, nextState);
 
@@ -91,7 +88,6 @@ class ScriptsLoader extends Component {
     scriptDOMElement.removeEventListener('error', state.errorListeners[script]);
     document.head.removeChild(scriptDOMElement);
 
-    console.log('success:', state.success.filter(successScript => successScript !== script));
     return ({
       ...state,
       errorListeners: Object.assign({}, state.errorListeners, { [script]: undefined }),
@@ -112,7 +108,6 @@ class ScriptsLoader extends Component {
   }
 
   handleLoad(script) {
-    console.log('load:', script);
     let nextState = {
       ...this.state,
       failure: this.state.failure.filter(failureScript => failureScript !== script),
