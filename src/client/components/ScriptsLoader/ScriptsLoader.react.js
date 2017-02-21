@@ -79,7 +79,7 @@ class ScriptsLoader extends Component {
   }
 
   isFailure(script) {
-    return this.state.failure.filter(successScript => successScript === script).length;
+    return this.state.failure.filter(failureScript => failureScript === script).length;
   }
 
   removeScript(script, state) {
