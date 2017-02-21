@@ -9,7 +9,7 @@ Set of utility react components
 Clone repository
 
 ```
-git clone https://github.com/OpusCapitaBES/js-react-loaders
+git clone git@github.com:OpusCapitaBES/js-react-loaders.git
 ```
 
 Install dependencies
