@@ -14,8 +14,8 @@ On componentWillUnmount script DOM nodes will be deleted.
 | Name                          | Type                  | Description                                                |
 | ------------------------------|:----------------------| -----------------------------------------------------------|
 | scripts | array | List of script URLs |
-| renderSpinner | func | You can specify custom spinner component `(script) => YourSpinnerComponent` |
-| renderError | func | You can specify custom error component `(script) => YourErrorComponent` |
+| renderSpinner | func | You can specify custom spinner component `(scripts) => YourSpinnerComponent` |
+| renderError | func | You can specify custom error component `(scripts) => YourErrorComponent` |
 
 ### Code Example
 
