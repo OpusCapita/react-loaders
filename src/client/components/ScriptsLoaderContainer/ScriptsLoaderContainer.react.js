@@ -1,6 +1,5 @@
 import React, { Component, PropTypes } from 'react';
 import ScriptsLoader from '../ScriptsLoader';
-import './ScriptsLoaderContainer.less';
 
 export default
 class ScriptsLoaderContainer extends Component {
