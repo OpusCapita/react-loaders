@@ -1,29 +1,52 @@
 import React, { Component, PropTypes } from 'react';
-import ScriptsLoader from '../ScriptsLoader';
+import ScriptsLoader from './scripts-loader.js';
+import isEqual from 'lodash/isEqual';
 
 export default
 class ScriptsLoaderContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      loaderState: {
-        loading: [],
-        success: [],
-        failure: []
-      }
+      isSuccess: false,
+      isError: false
     };
   }
 
-  handleLoaderChange(loaderState) {
-    this.setState({ loaderState });
+  componentDidMount() {
+    this.initScriptsLoader(this.props.scripts);
   }
 
-  isLoaded() {
-    return this.state.loaderState.loading.length;
+  componentWillReceiveProps(nextProps) {
+    if(!isEqual(this.props.scripts, nextProps.scripts)) {
+      this.scriptsLoader.destroy();
+      this.initScriptsLoader(nextProps.scripts);
+      this.setState({
+        isSuccess: false,
+        isError: false
+      });
+    }
   }
 
-  isError() {
-    return this.state.loaderState.failure.length;
+  componentWillUnmount() {
+    this.scriptsLoader.destroy();
+  }
+
+  initScriptsLoader(urls) {
+    this.scriptsLoader = new ScriptsLoader(urls, this.handleSuccess.bind(this), this.handleError.bind(this));
+  }
+
+  handleSuccess() {
+    this.setState({
+      isSuccess: true,
+      isError: false
+    });
+  }
+
+  handleError() {
+    this.setState({
+      isSuccess: false,
+      isError: true
+    });
   }
 
   render() {
@@ -35,16 +58,14 @@ class ScriptsLoaderContainer extends Component {
       ...restProps
     } = this.props;
 
-    let errorElement = this.isError() ? renderError(this.state.loaderState.failure): null;
-    let spinnerElement = this.isLoaded() ? renderSpinner(this.state.loaderState.loading) : null;
+    let { isSuccess, isError } = this.state;
+
+    let errorElement = isError ? renderError(): null;
+    let spinnerElement = (!isSuccess && !isError) ? renderSpinner() : null;
     let content = errorElement || spinnerElement || children;
 
     return (
       <div { ...restProps }>
-        <ScriptsLoader
-          scripts={scripts}
-          onChange={this.handleLoaderChange.bind(this)}
-        />
         {content}
       </div>
     );
@@ -57,7 +78,7 @@ ScriptsLoaderContainer.propTypes = {
   scripts: PropTypes.array
 };
 ScriptsLoaderContainer.defaultProps = {
-  renderSpinner: (scripts) => (<span>Loading ... {scripts}</span>),
-  renderError: (scripts) => (<span>Error ... {scripts}</span>),
+  renderSpinner: () => (<span>Loading ...</span>),
+  renderError: () => (<span>Error ...</span>),
   scripts: []
 };
