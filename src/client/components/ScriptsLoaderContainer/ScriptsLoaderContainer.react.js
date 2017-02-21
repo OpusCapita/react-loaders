@@ -31,7 +31,8 @@ class ScriptsLoaderContainer extends Component {
       children,
       scripts,
       renderSpinner,
-      renderError
+      renderError,
+      ...restProps
     } = this.props;
 
     let errorElement = this.isError() ? renderError(this.state.loaderState.failure): null;
@@ -39,7 +40,7 @@ class ScriptsLoaderContainer extends Component {
     let content = errorElement || spinnerElement || children;
 
     return (
-      <div className="scripts-loader-container">
+      <div { ...restProps }>
         <ScriptsLoader
           scripts={scripts}
           onChange={this.handleLoaderChange.bind(this)}
@@ -56,7 +57,7 @@ ScriptsLoaderContainer.propTypes = {
   scripts: PropTypes.array
 };
 ScriptsLoaderContainer.defaultProps = {
-  renderSpinner: (scriptNames) => (<span>Loading ... {scriptNames}</span>),
-  renderError: (scriptNames) => (<span>Error ... {scriptNames}</span>),
+  renderSpinner: (scripts) => (<span>Loading ... {scripts}</span>),
+  renderError: (scripts) => (<span>Error ... {scripts}</span>),
   scripts: []
 };
