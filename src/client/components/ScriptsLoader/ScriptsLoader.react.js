@@ -47,7 +47,7 @@ class ScriptsLoader extends Component {
   }
 
   getScriptsToCreate(prevScripts, nextScripts) {
-    return nextScripts.filter(nextScript => prevScripts.indexOf(nextScripts) === -1);
+    return nextScripts.filter(nextScript => prevScripts.indexOf(nextScript) === -1);
   }
 
   createScripts(scripts, state) {
