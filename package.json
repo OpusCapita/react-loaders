@@ -8,7 +8,9 @@
     "lint": "eslint src/client",
     "prepublish": "npm run build",
     "start": "node www/index",
-    "test": "mocha"
+    "npm-build": "rimraf lib && babel --copy-files --no-babelrc --presets es2015,stage-0,react --plugins transform-object-assign,transform-decorators-legacy --ignore __tests__,*.spec.js,demo src/client --out-dir lib",
+    "npm-publish": "npm run npm-build && npm-publish",
+    "publish-release": "npm run npm-publish -- --release"
   },
   "main": "lib/index.js",
   "files": [
@@ -45,13 +47,13 @@
     "eslint-plugin-react": "5.1.1",
     "express": "4.13.4",
     "file-loader": "^0.9.0",
-    "opuscapita-showroom-client": "1.0.24",
-    "opuscapita-showroom-server": "1.0.24",
     "json-loader": "0.5.4",
     "less": "^2.3.1",
     "less-loader": "2.2.2",
     "mocha": "^3.2.0",
     "nodemon": "1.9.1",
+    "opuscapita-showroom-client": "1.0.24",
+    "opuscapita-showroom-server": "1.0.24",
     "postcss-loader": "^0.13.0",
     "postcss-modules": "^0.5.2",
     "raw-loader": "0.5.1",
@@ -64,6 +66,7 @@
     "write-file-webpack-plugin": "^3.3.0"
   },
   "dependencies": {
-    "lodash": "4.17.4"
+    "lodash": "4.17.4",
+    "opuscapita-npm-scripts": "^1.0.6"
   }
 }
