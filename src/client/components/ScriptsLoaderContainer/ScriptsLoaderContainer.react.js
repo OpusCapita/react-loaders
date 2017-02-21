@@ -9,8 +9,8 @@ class ScriptsLoaderContainer extends Component {
     this.state = {
       loaderState: {
         loading: [],
-        succesed: [],
-        failed: []
+        success: [],
+        failure: []
       }
     };
   }
@@ -24,19 +24,20 @@ class ScriptsLoaderContainer extends Component {
   }
 
   isError() {
-    return this.state.loaderState.failed.length;
+    return this.state.loaderState.failure.length;
   }
 
   render() {
     let {
       children,
       scripts,
-      getSpinnerComponent,
-      getErrorComponent
+      renderSpinner,
+      renderError
     } = this.props;
 
-    let spinnerElement = this.isLoaded() ? getSpinnerComponent(this.state.loaderState.loading) : null;
-    let errorElement = this.isError() ? getErrorComponent(this.state.loaderState.failed): null;
+    let errorElement = this.isError() ? renderError(this.state.loaderState.failure): null;
+    let spinnerElement = this.isLoaded() ? renderSpinner(this.state.loaderState.loading) : null;
+    let content = errorElement || spinnerElement || children;
 
     return (
       <div className="scripts-loader-container">
@@ -44,21 +45,19 @@ class ScriptsLoaderContainer extends Component {
           scripts={scripts}
           onChange={this.handleLoaderChange.bind(this)}
         />
-        {spinnerElement}
-        {errorElement}
-        {children}
+        {content}
       </div>
     );
   }
 }
 
 ScriptsLoaderContainer.propTypes = {
-  getSpinnerComponent: PropTypes.func,
-  getErrorComponent: PropTypes.func,
-  scripts: PropTypes.object
+  renderSpinner: PropTypes.func,
+  renderError: PropTypes.func,
+  scripts: PropTypes.array
 };
 ScriptsLoaderContainer.defaultProps = {
-  getSpinnerComponent: (scriptNames) => (<span>Loading ... {scriptNames}</span>),
-  getErrorComponent: (scriptNames) => (<span>Error ... {scriptNames}</span>),
-  scripts: {}
+  renderSpinner: (scriptNames) => (<span>Loading ... {scriptNames}</span>),
+  renderError: (scriptNames) => (<span>Error ... {scriptNames}</span>),
+  scripts: []
 };
