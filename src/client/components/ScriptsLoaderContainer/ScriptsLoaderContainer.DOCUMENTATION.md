@@ -2,12 +2,12 @@
 
 ScriptsLoaderContainer is a component which allow to specify list of scpits URLs and load them dynamically.
 
-Script DOM nodes will be added to **head** of document.
-On componentWillUnmount script DOM nodes will be deleted.
-
 * If scripts are in loading process, it renders **spinner**.
 * If one of script loading has been failed, it renders **error**
 * Else (when all scripts loaded and no errors) it renders component **children**
+
+Script DOM nodes will be added to **head** of document.
+On componentWillUnmount script DOM nodes will be deleted.
 
 ### Props Reference
 
