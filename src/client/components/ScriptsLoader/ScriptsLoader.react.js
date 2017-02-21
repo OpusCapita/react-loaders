@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import isEqual from 'lodash/isEqual';
+import assign from 'lodash/assign';
 
 export default
 class ScriptsLoader extends Component {
@@ -67,10 +68,10 @@ class ScriptsLoader extends Component {
 
     return ({
       ...state,
-      errorListeners: Object.assign({}, state.errorListeners, { [script]: errorListener }),
-      loadListeners: Object.assign({}, state.loadListeners, { [script]: loadListener }),
+      errorListeners: assign({}, state.errorListeners, { [script]: errorListener }),
+      loadListeners: assign({}, state.loadListeners, { [script]: loadListener }),
       loading: state.loading.concat([ script ]),
-      scriptDOMElements: Object.assign({}, state.scriptDOMElements, { [script]: scriptDOMElement })
+      scriptDOMElements: assign({}, state.scriptDOMElements, { [script]: scriptDOMElement })
     });
   }
 
@@ -90,11 +91,11 @@ class ScriptsLoader extends Component {
 
     return ({
       ...state,
-      errorListeners: Object.assign({}, state.errorListeners, { [script]: undefined }),
+      errorListeners: assign({}, state.errorListeners, { [script]: undefined }),
       failure: state.failure.filter(failureScript => failureScript !== script),
-      loadListeners: Object.assign({}, state.loadListeners, { [script]: undefined }),
+      loadListeners: assign({}, state.loadListeners, { [script]: undefined }),
       loading: state.loading.filter(loadingScript => loadingScript !== script),
-      scriptDOMElements: Object.assign({}, state.scriptDOMElements, { [script]: undefined }),
+      scriptDOMElements: assign({}, state.scriptDOMElements, { [script]: undefined }),
       success: state.success.filter(successScript => successScript !== script)
     });
   }
