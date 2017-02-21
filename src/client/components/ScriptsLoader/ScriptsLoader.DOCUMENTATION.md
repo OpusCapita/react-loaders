@@ -1,7 +1,15 @@
 ### Synopsis
 
-ScriptsLoader is 
-*Write here a short introduction and/or overview that explains **what** component is.*
+ScriptsLoader is a component which allow to specify list of scpits URLs and load them dynamically.
+Script DOM nodes will be added to **head** of document.
+On componentWillUnmount script DOM nodes will be deleted.
+
+### Props Reference
+
+| Name                          | Type                  | Description                                                |
+| ------------------------------|:----------------------| -----------------------------------------------------------|
+| scripts | array | List of script URLs |
+| onChange | func | Callback fired on every state change e.g. on script load started, script loaded succesfully, script load failed.<br> Returns object `{ failure: [...urls], loading: [...urls], success: [...urls] }` |
 
 ### Code Example
 
@@ -16,17 +24,11 @@ ScriptsLoader is
 />
 ```
 
-### Props Reference
-
-| Name                          | Type                  | Description                                                |
-| ------------------------------|:----------------------| -----------------------------------------------------------|
-| demoProp | string | Write a description of the property |
-
 ### Component Name
 
 ScriptsLoader
 
 ### License
 
-Licensed by © 2016 OpusCapita
+Licensed by © 2017 OpusCapita
 

@@ -1,7 +1,21 @@
 ### Synopsis
 
-ScriptsLoaderContainer is 
-*Write here a short introduction and/or overview that explains **what** component is.*
+ScriptsLoaderContainer is a component which allow to specify list of scpits URLs and load them dynamically.
+
+Script DOM nodes will be added to **head** of document.
+On componentWillUnmount script DOM nodes will be deleted.
+
+* If scripts are in loading process, it renders **spinner**.
+* If one of script loading has been failed, it renders **error**
+* Else (when all scripts loaded and no errors) it renders component **children**
+
+### Props Reference
+
+| Name                          | Type                  | Description                                                |
+| ------------------------------|:----------------------| -----------------------------------------------------------|
+| scripts | array | List of script URLs |
+| renderSpinner | func | You can specify custom spinner component `(script) => YourSpinnerComponent` |
+| renderError | func | You can specify custom error component `(script) => YourErrorComponent` |
 
 ### Code Example
 
@@ -25,22 +39,11 @@ ScriptsLoaderContainer is
 </ScriptsLoaderContainer>
 ```
 
-### Props Reference
-
-| Name                          | Type                  | Description                                                |
-| ------------------------------|:----------------------| -----------------------------------------------------------|
-| demoProp | string | Write a description of the property |
-
-### Contributors
-*Write here contributor names/contacts*
-
-[GIT REPOSITORY](http://buildserver.jcatalog.com/gitweb/?p=js-react-application-generator.git)
-
 ### Component Name
 
 ScriptsLoaderContainer
 
 ### License
 
-Licensed by © 2016 OpusCapita
+Licensed by © 2017 OpusCapita
 
