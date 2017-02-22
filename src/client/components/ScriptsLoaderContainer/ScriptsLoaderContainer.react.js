@@ -7,6 +7,7 @@ class ScriptsLoaderContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      isLoading: false,
       isSuccess: false,
       isError: false
     };
@@ -20,10 +21,6 @@ class ScriptsLoaderContainer extends Component {
     if(!isEqual(this.props.scripts, nextProps.scripts)) {
       this.scriptsLoader.destroy();
       this.initScriptsLoader(nextProps.scripts);
-      this.setState({
-        isSuccess: false,
-        isError: false
-      });
     }
   }
 
@@ -33,10 +30,16 @@ class ScriptsLoaderContainer extends Component {
 
   initScriptsLoader(urls) {
     this.scriptsLoader = new ScriptsLoader(urls, this.handleSuccess.bind(this), this.handleError.bind(this));
+    this.setState({
+      isLoading: true,
+      isSuccess: false,
+      isError: false
+    });
   }
 
   handleSuccess() {
     this.setState({
+      isLoading: false,
       isSuccess: true,
       isError: false
     });
@@ -44,6 +47,7 @@ class ScriptsLoaderContainer extends Component {
 
   handleError() {
     this.setState({
+      isLoading: false,
       isSuccess: false,
       isError: true
     });
@@ -58,11 +62,17 @@ class ScriptsLoaderContainer extends Component {
       ...restProps
     } = this.props;
 
-    let { isSuccess, isError } = this.state;
+    let { isSuccess, isLoading, isError } = this.state;
 
-    let errorElement = isError ? renderError(): null;
-    let spinnerElement = (!isSuccess && !isError) ? renderSpinner() : null;
-    let content = errorElement || spinnerElement || children;
+    let content = null;
+
+    if(isError) {
+      content = renderError();
+    } else if (isLoading) {
+      content = renderSpinner();
+    } else if (isSuccess) {
+      content = children;
+    }
 
     return (
       <div { ...restProps }>
