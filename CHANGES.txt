@@ -1,4 +1,22 @@
 
+Release 0.0.2 Wed Mar 01 2017 16:14:08 GMT+0300 (+03)
+=======================================================
+
+ - Added 'isLoading' state field to ScriptsLoaderContainer (Kirill Volkovich <volkovich@scand.com>, Wed Feb 22 16:12:58 2017 +0300)
+ - Removed ScriptsLoader component (Kirill Volkovich <volkovich@scand.com>, Wed Feb 22 15:54:01 2017 +0300)
+ - ScriptsLoaderContainer now use 'scripts-loader' function
+    
+    Instead of ScriptsLoader component (Kirill Volkovich <volkovich@scand.com>, Tue Feb 21 18:48:58 2017 +0300)
+ - Implemented scripts-loader function (Kirill Volkovich <volkovich@scand.com>, Tue Feb 21 18:48:44 2017 +0300)
+ - Replaced Object.assign => lodash/assign for IE11 compatibility (Kirill Volkovich <volkovich@scand.com>, Tue Feb 21 15:23:30 2017 +0300)
+ - Removed unused files (Kirill Volkovich <volkovich@scand.com>, Tue Feb 21 14:35:26 2017 +0300)
+ - Fixed typo in ScriptsLoader (Kirill Volkovich <volkovich@scand.com>, Tue Feb 21 14:27:49 2017 +0300)
+ - Merge branch 'master' of opuscapita.github.com:OpusCapitaBES/js-react-loaders (0b6a46d 00d287d, Kirill Volkovich <volkovich@scand.com>)
+ - Updated ScriptsLoaderContainer documentation (Kirill Volkovich <volkovich@scand.com>, Tue Feb 21 14:03:33 2017 +0300)
+ - Update README.md (Kirill Volkovich <kvolkovich-sc@users.noreply.github.com>, Tue Feb 21 11:11:11 2017 +0300)
+ - Update README.md (Kirill Volkovich <kvolkovich-sc@users.noreply.github.com>, Tue Feb 21 11:10:41 2017 +0300)
+ - Updating to a version to  0.0.2 (Kirill Volkovich <volkovich@scand.com>, Tue Feb 21 11:06:47 2017 +0300)
+
 Release 0.0.1 Tue Feb 21 2017 11:06:36 GMT+0300 (+03)
 =======================================================
 
