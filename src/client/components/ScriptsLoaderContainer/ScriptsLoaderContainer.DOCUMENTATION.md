@@ -13,6 +13,7 @@ On componentWillUnmount script DOM nodes will be deleted.
 
 | Name                          | Type                  | Description                                                |
 | ------------------------------|:----------------------| -----------------------------------------------------------|
+| children | object or function | When passed **object** - default React behavior. <br/>If passed **function** - result of **function** execution will be rendered |
 | scripts | array | List of script URLs |
 | renderSpinner | func | You can specify custom spinner component `(scripts) => YourSpinnerComponent` |
 | renderError | func | You can specify custom error component `(scripts) => YourErrorComponent` |
@@ -20,22 +21,18 @@ On componentWillUnmount script DOM nodes will be deleted.
 ### Code Example
 
 ```
-<ScriptsLoaderContainer
-  scripts={[
-    'https://cdnjs.cloudflare.com/ajax/libs/rxjs/5.0.1/Rx.js',
-    'https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.17.1/moment.js',
-    'https://code.jquery.com/jquery-3.1.1.js'
-  ]}
+<ScriptsLoaderContainer 
+	scripts={[
+	  'http://localhost:3000/static/SupplierInput.js',
+		'http://localhost:3000/static/ClassificationInput.js'
+	]}
 >
-  <h3>Content</h3>
-  <p>
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-    Nulla hendrerit nec massa et venenatis. Cras tempus varius ligula vitae vulputate.
-    In sodales aliquam diam. Praesent tempor scelerisque orci in tristique.
-    Vivamus id efficitur sem, dictum pharetra tellus.
-    Vivamus sit amet accumsan felis.
-    Quisque vestibulum felis id dapibus vestibulum. Pellentesque condimentum tincidunt sapien.
-  </p>
+{() => (
+  <div>
+    <SupplierInput.default serviceRegistry={() => 'localhost:3000'} />
+	  <ClassificationInput.default serviceRegistry={() => 'localhost:3000'} />
+  </div>
+)}
 </ScriptsLoaderContainer>
 ```
 

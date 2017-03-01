@@ -71,7 +71,7 @@ class ScriptsLoaderContainer extends Component {
     } else if (isLoading) {
       content = renderSpinner();
     } else if (isSuccess) {
-      content = children;
+      content = typeof children === 'function' ? children() : children;
     }
 
     return (

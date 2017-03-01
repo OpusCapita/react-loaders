@@ -42,6 +42,8 @@ app.get('/', function(req, res) {
   res.sendFile(path.normalize(__dirname + '/index.html'));
 });
 
+app.use('/static', express.static(path.resolve(__dirname, '../www/static')));
+
 app.listen(port, (err) => {
   if (err) {
     console.log(err);
