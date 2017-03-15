@@ -1,4 +1,12 @@
 
+Release 0.1.0 Wed Mar 15 2017 15:29:59 GMT+0300 (+03)
+=======================================================
+
+ - Updated minor version because 'serviceComponent' has been added (Kirill Volkovich <volkovich@scand.com>, Wed Mar 15 15:29:24 2017 +0300)
+ - Improved 'serviceComponent' docs (Kirill Volkovich <volkovich@scand.com>, Wed Mar 15 15:27:45 2017 +0300)
+ - Improved 'serviceComponent' docs (Kirill Volkovich <volkovich@scand.com>, Wed Mar 15 15:23:46 2017 +0300)
+ - Updating to a version to  0.0.5 (Kirill Volkovich <volkovich@scand.com>, Wed Mar 15 15:05:22 2017 +0300)
+
 Release 0.0.4 Wed Mar 15 2017 15:05:13 GMT+0300 (+03)
 =======================================================
 
