@@ -8,7 +8,7 @@
 
 You can pass any **specified component** properties
 
-LoadedComponent required several additional props
+LoadedComponent require several additional props
 
 | Name                           | Type                    | Description                                                                                                                      |
 | ------------------------------ | :---------------------- | -----------------------------------------------------------                                                                      |
@@ -24,6 +24,7 @@ LoadedComponent required several additional props
 
   let CustomerInput = serviceComponent('customer', 'CustomerInput');
 
+  // 'localhost:3000' specified, but in fact it's a proxy to demo-installation =)
   let serviceRegistry = (service) => ({ url: 'http://localhost:3000' });
   
   return (
