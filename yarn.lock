@@ -2275,7 +2275,7 @@ glob@7.0.5:
     once "^1.3.0"
     path-is-absolute "^1.0.0"
 
-glob@7.1.0:
+glob@7.1.0, glob@^7.0.0, glob@^7.0.3, glob@^7.0.5:
   version "7.1.0"
   resolved "http://leon.scand:4873/glob/-/glob-7.1.0.tgz#36add856d746d0d99e4cc2797bba1ae2c67272fd"
   dependencies:
@@ -2286,7 +2286,7 @@ glob@7.1.0:
     once "^1.3.0"
     path-is-absolute "^1.0.0"
 
-glob@7.1.1, glob@^7.0.0, glob@^7.0.3, glob@^7.0.5:
+glob@7.1.1:
   version "7.1.1"
   resolved "http://leon.scand:4873/glob/-/glob-7.1.1.tgz#805211df04faaf1c63a3600306cdf5ade50b2ec8"
   dependencies:
@@ -3604,13 +3604,13 @@ opuscapita-npm-scripts@^1.0.6:
     lodash "4.13.1"
     xml2js "0.4.16"
 
-opuscapita-showroom-client@1.0.24:
-  version "1.0.24"
-  resolved "http://leon.scand:4873/opuscapita-showroom-client/-/opuscapita-showroom-client-1.0.24.tgz#b8dabf0139d8465d0458cadc93f98927aeb4834b"
+opuscapita-showroom-client@^1.1.0:
+  version "1.1.0"
+  resolved "http://leon.scand:4873/opuscapita-showroom-client/-/opuscapita-showroom-client-1.1.0.tgz#adcd385ff8ce7a8842e2f812c4e8b217e895adde"
 
-opuscapita-showroom-server@1.0.24:
-  version "1.0.24"
-  resolved "http://leon.scand:4873/opuscapita-showroom-server/-/opuscapita-showroom-server-1.0.24.tgz#67ecf37ce772a44e47ff4d72aeb2f57e58fae2ce"
+opuscapita-showroom-server@^1.1.0:
+  version "1.1.0"
+  resolved "http://leon.scand:4873/opuscapita-showroom-server/-/opuscapita-showroom-server-1.1.0.tgz#072892fdff70a35166e1b83781c6b8b4d42fefe6"
   dependencies:
     fs-extra "0.30.0"
     glob "7.1.1"
