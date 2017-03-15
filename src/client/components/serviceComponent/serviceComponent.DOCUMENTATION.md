@@ -1,10 +1,14 @@
 ### Synopsis
 
-**serviceComponent** allow to load specified component from specified service and render it.
+**serviceComponent** is a function which allow to load **specified component** from **specified service** and render it.
 
-`serviceComponent(service, componentName) => asyncComponent`
+`serviceComponent(service, componentName) => LoadedComponent`
 
-### Async component additional props
+### LoadedComponent props
+
+You can pass any **specified component** properties
+
+LoadedComponent required several additional props
 
 | Name                           | Type                    | Description                                                                                                                      |
 | ------------------------------ | :---------------------- | -----------------------------------------------------------                                                                      |
