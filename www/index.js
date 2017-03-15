@@ -11,6 +11,13 @@ const compiler = webpack(require('../webpack.development.config'));
 
 const app = express();
 
+
+app.use(function(req, res, next) {
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+  next();
+});
+
 let componentsRoot = path.resolve(__dirname, '../src/client/components');
 require('opuscapita-showroom-server').makeLocalScan(componentsRoot);
 
@@ -43,6 +50,8 @@ app.get('/', function(req, res) {
 });
 
 app.use('/static', express.static(path.resolve(__dirname, '../www/static')));
+
+app.use(require('./proxy'));
 
 app.listen(port, (err) => {
   if (err) {
