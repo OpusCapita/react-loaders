@@ -17,26 +17,23 @@ LoadedComponent require several additional props
   
 ### Code Example
 
-```
+```jsx harmony
 <div>
 {(() => {
 // Example start
 
-  let CustomerInput = serviceComponent('customer', 'CustomerInput');
-
   // 'localhost:3000' specified, but in fact it's a proxy to demo-installation =)
-  let serviceRegistry = (service) => ({ url: 'http://localhost:3000' });
+  let serviceRegistry = (service) => ({ url: 'http://localhost:3000' });  
+  let SupplierInput = serviceComponent({serviceRegistry, serviceName: 'supplier', moduleName: 'SupplierInput'});
   
   return (
-    <CustomerInput
+    <SupplierInput
       serviceRegistry={serviceRegistry}
-      loadWith={serviceRegistry}
       value={{}}
       onChange={() => console.log('onChange!')}
       disabled={false}
     />
   );
-  
 // Example end
 })()}
 </div>

@@ -6,7 +6,7 @@ let host = require('./clientConfig').host;
 let port = require('./clientConfig').port;
 
 module.exports = {
-  entry: path.resolve(path.join(__dirname, 'www', 'index-page.js')),
+  entry: path.resolve(path.join(__dirname, 'src', 'server', 'demo', 'index-page.js')),
   context: path.resolve(__dirname),
   output: {
     publicPath: '/',
@@ -60,10 +60,6 @@ module.exports = {
         loader : 'file-loader'
       },
       {
-        include: /\.json$/,
-        loader: 'json-loader'
-      },
-      {
         test: /\.md$/,
         loader: 'raw-loader'
       },
@@ -84,8 +80,13 @@ module.exports = {
         loader: 'babel',
         include: [
           path.join(__dirname, 'src'),
-          path.join(__dirname, 'www')
-        ]
+          path.join(__dirname, 'server'),
+          path.join(__dirname, 'demo')
+        ],
+        query: {
+          presets: ['es2015', 'react', 'stage-0'],
+          plugins: ['babel-plugin-transform-decorators-legacy']
+        }
       }
     ]
   }

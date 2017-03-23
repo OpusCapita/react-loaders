@@ -1,37 +1,40 @@
 import React from 'react';
 import scriptjs from 'scriptjs';
-import omit from 'lodash/omit';
+import get from 'lodash/get';
 
-export default function(service, componentName) {
+export default function({serviceName, jsFileName, moduleName, componentPath, serviceRegistry, inProgressComponent}) {
+// export default function(service, componentName) {
   return class extends React.Component {
     state = {
       loadedComponent: null
     };
 
-    static propTypes = {
-      loadWith: React.PropTypes.func.isRequired,
-      inProgress: React.PropTypes.element
+    getLoadedComponent = () => {
+      const module = window[moduleName].default;
+      let loadedComponent = module;
+      if (componentPath) {
+        loadedComponent = get(module, componentPath);
+      }
+
+      return loadedComponent;
     };
 
     componentDidMount = () => {
-      if (window[componentName]) {
-        this.setState({ loadedComponent: window[componentName].default });
+      if (window[moduleName]) {
+        this.setState({ loadedComponent: this.getLoadedComponent() });
       } else {
-        let { loadWith } = this.props;
-
-        scriptjs(loadWith(service).url + `/static/components/${componentName}.js`, () => {
-          this.setState({ loadedComponent: window[componentName].default });
+        scriptjs(serviceRegistry(serviceName).url + `/static/components/${jsFileName || moduleName}.js`, () => {
+          this.setState({ loadedComponent: this.getLoadedComponent() });
         });
       }
     };
 
     render() {
       let { loadedComponent } = this.state;
-      let { inProgress } = this.props;
       if (loadedComponent) {
-        return React.createElement(loadedComponent, omit(this.props, ['loadWith', 'inProgress']));
-      } else if (inProgress) {
-        return inProgress;
+        return React.createElement(loadedComponent, this.props);
+      } else if (inProgressComponent) {
+        return React.createElement(inProgressComponent);
       } else {
         return null;
       }
