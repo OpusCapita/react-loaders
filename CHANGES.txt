@@ -1,4 +1,11 @@
 
+Release 0.1.1 Thu Mar 23 2017 11:08:58 GMT+0300 (+03)
+=======================================================
+
+ - (CMMN-5194) Fixing code styles (Dmitry Divin <divin@scand.com>, Thu Mar 23 11:03:43 2017 +0300)
+ - (CMMN-5194) Refactoring code (Dmitry Divin <divin@scand.com>, Thu Mar 23 10:57:15 2017 +0300)
+ - Updating to a version to  0.1.1 (Kirill Volkovich <volkovich@scand.com>, Wed Mar 15 15:30:13 2017 +0300)
+
 Release 0.1.0 Wed Mar 15 2017 15:29:59 GMT+0300 (+03)
 =======================================================
 
