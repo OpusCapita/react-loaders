@@ -2,19 +2,23 @@
 
 **serviceComponent** is a function which allow to load **specified component** from **specified service** and render it.
 
-`serviceComponent(service, componentName) => LoadedComponent`
+`serviceComponent(options) => LoadedComponent`
 
-### LoadedComponent props
+Where `options` as props
 
-You can pass any **specified component** properties
+| Name                           | Type                    | Description                                                                  |
+| ------------------------------ | :---------------------- | -----------------------------------------------------------                  |
+| serviceRegistry                | func                    | *serviceRegistry* function. Should be resolve URL by service name            |
+| inProgressComponent            | node                    | Spinner element. Will be shown while component not loaded yet.
+| moduleName                     | string                  | Export module name to window scope
+| serviceName                    | string                  | Service name (for service registry)
+| jsFileName                     | string                  | Path to file loaded script name (by default used moduleName) 
+| componentPath                  | string                  | Component path on module   
 
-LoadedComponent require several additional props
+#### URL compilation for example
+`{serviceURL}/static/components/{jsFileName || moduleName}.js`
 
-| Name                           | Type                    | Description                                                                                                                      |
-| ------------------------------ | :---------------------- | -----------------------------------------------------------                                                                      |
-| loadWith                       | func                    | *serviceRegistry* function. Components will be loaded by convention address  `service.url/static/components/${componentName}.js` |
-| inProgress                     | node                    | Spinner element. Will be shown while component not loaded yet.                                                                   |
-  
+
 ### Code Example
 
 ```jsx harmony
