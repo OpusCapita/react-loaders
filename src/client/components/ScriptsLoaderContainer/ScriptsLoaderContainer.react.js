@@ -18,7 +18,7 @@ class ScriptsLoaderContainer extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if(!isEqual(this.props.scripts, nextProps.scripts)) {
+    if (!isEqual(this.props.scripts, nextProps.scripts)) {
       this.scriptsLoader.destroy();
       this.initScriptsLoader(nextProps.scripts);
     }
@@ -56,7 +56,6 @@ class ScriptsLoaderContainer extends Component {
   render() {
     let {
       children,
-      scripts,
       renderSpinner,
       renderError,
       ...restProps
@@ -66,7 +65,7 @@ class ScriptsLoaderContainer extends Component {
 
     let content = null;
 
-    if(isError) {
+    if (isError) {
       content = renderError();
     } else if (isLoading) {
       content = renderSpinner();

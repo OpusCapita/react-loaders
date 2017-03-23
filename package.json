@@ -7,6 +7,7 @@
     "build": "rimraf lib && babel --copy-files --no-babelrc --presets es2015,stage-0,react --plugins transform-decorators-legacy --ignore __tests__,*.spec.js,demo src/client/components --out-dir lib",
     "link-mode": "webpack --watch --config ./webpack.link.config.js",
     "lint": "eslint src/client",
+    "lint-fix": "eslint src --fix",
     "prepublish": "npm run build",
     "start": "nodemon --watch src/server src/server/demo/index --exec babel-node --presets es2015,stage-0,react --plugins babel-plugin-transform-decorators-legacy",
     "npm-build": "rimraf lib && babel --copy-files --no-babelrc --presets es2015,stage-0,react --plugins transform-object-assign,transform-decorators-legacy --ignore __tests__,*.spec.js,demo src/client --out-dir lib",

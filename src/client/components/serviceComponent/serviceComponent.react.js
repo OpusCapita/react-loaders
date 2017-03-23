@@ -2,7 +2,7 @@ import React from 'react';
 import scriptjs from 'scriptjs';
 import get from 'lodash/get';
 
-export default function({serviceName, jsFileName, moduleName, componentPath, serviceRegistry, inProgressComponent}) {
+export default function({ serviceName, jsFileName, moduleName, componentPath, serviceRegistry, inProgressComponent }) {
 // export default function(service, componentName) {
   return class extends React.Component {
     state = {
