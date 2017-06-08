@@ -6,8 +6,6 @@ OpusCapita React Components (date inputs/pickers)
 
 Online demo and components reference available here: https://opuscapita.github.io/react-loaders
 
-** ! Need to demo load component candidates to demo works properly (coming soon in 20 minutes) **
-
 > Demo powered by [react-showroom](https://github.com/OpusCapitaBES/js-react-showroom-client)
 
 ## Installation
