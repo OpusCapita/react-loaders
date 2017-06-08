@@ -27,7 +27,7 @@ Where `options` as props
 {(() => {
 // Example start
 
-  let serviceRegistry = (service) => ({ url: `http://${location.host}${location.pathname.slice(0, -1)}` });  
+  let serviceRegistry = (service) => ({ url: `${location.protocol}//${location.host}${location.pathname.slice(0, -1)}` });  
   let SupplierInput = serviceComponent({serviceRegistry, serviceName: 'supplier', moduleName: 'SupplierInput'});
   
   return (
