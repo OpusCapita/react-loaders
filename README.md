@@ -1,25 +1,34 @@
-# React loaders
+# React loaders ![badge-npm-version](https://img.shields.io/npm/v/opuscapita-react-loaders.svg) ![badge-license](https://img.shields.io/github/license/OpusCapita/react-loaders.svg)
 
-## Synopsis
+OpusCapita React Components (date inputs/pickers)
 
-Set of utility react components
+## Demo and documentation
 
-## Demo
+Online demo and components reference available here: https://opuscapita.github.io/react-loaders
 
-Clone repository
+** ! Need to demo load component candidates to demo works properly (coming soon in 20 minutes) **
 
-```
-git clone git@github.com:OpusCapitaBES/js-react-loaders.git
-```
+> Demo powered by [react-showroom](https://github.com/OpusCapitaBES/js-react-showroom-client)
 
-Install dependencies
+## Installation
 
-```
-yarn
-```
+`npm install @opuscapita/react-loaders`
 
-Run demo
+## Date format
 
-```
-npm start
-```
+* `dd` - day
+* `MM` - month
+* `yy` - year
+
+Any separators except these allowed: `1`, `a`, `A`, `*`, `#`
+
+## Contributors
+
+| [<img src="https://avatars.githubusercontent.com/u/24603787?v=3" width="100px;"/>](https://github.com/asergeev-sc) | [**Alexey Sergeev**](https://github.com/asergeev-sc)     |
+| :---: | :---: |
+| [<img src="https://avatars.githubusercontent.com/u/24733803?v=3" width="100px;"/>](https://github.com/ddivin-sc) | [**Dmitry Divin**](https://github.com/ddivin-sc) |
+| [<img src="https://avatars.githubusercontent.com/u/24652543?v=3" width="100px;"/>](https://github.com/kvolkovich-sc) | [**Kirill Volkovich**](https://github.com/kvolkovich-sc) |
+
+## License
+
+Licensed under the Apache License, Version 2.0. See [LICENSE](./LICENSE) for the full license text.
