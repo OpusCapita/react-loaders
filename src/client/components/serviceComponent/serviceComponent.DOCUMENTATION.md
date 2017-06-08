@@ -6,16 +6,17 @@
 
 Where `options` as props
 
-| Name                           | Type                    | Description                                                                  |
-| ------------------------------ | :---------------------- | -----------------------------------------------------------                  |
-| serviceRegistry                | func                    | *serviceRegistry* function. Should be resolve URL by service name            |
-| inProgressComponent            | node                    | Spinner element. Will be shown while component not loaded yet.
-| moduleName                     | string                  | Export module name to window scope
-| serviceName                    | string                  | Service name (for service registry)
-| jsFileName                     | string                  | Path to file loaded script name (by default used moduleName) 
-| componentPath                  | string                  | Component path on module   
+| Name                           | Type                    | Description                                                       |
+| ------------------------------ | :---------------------- | -----------------------------------------------------------       |
+| serviceRegistry                | func                    | *serviceRegistry* function. Should be resolve URL by service name |
+| inProgressComponent            | node                    | Spinner element. Will be shown while component not loaded yet.    |
+| moduleName                     | string                  | Export module name to window scope                                |
+| serviceName                    | string                  | Service name (for service registry)                               |
+| jsFileName                     | string                  | Path to file loaded script name (by default used moduleName)      |
+| componentPath                  | string                  | Component path on module                                          |
 
 #### URL compilation for example
+
 `{serviceURL}/static/components/{jsFileName || moduleName}.js`
 
 
@@ -26,8 +27,7 @@ Where `options` as props
 {(() => {
 // Example start
 
-  // 'localhost:3000' specified, but in fact it's a proxy to demo-installation =)
-  let serviceRegistry = (service) => ({ url: 'http://localhost:3000' });  
+  let serviceRegistry = (service) => ({ url: `http://${location.host}${location.pathname.replace('/', '')}` });  
   let SupplierInput = serviceComponent({serviceRegistry, serviceName: 'supplier', moduleName: 'SupplierInput'});
   
   return (
