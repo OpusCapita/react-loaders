@@ -1,8 +1,8 @@
 {
-  "name": "opuscapita-react-loaders",
+  "name": "@opuscapita/react-loaders",
   "version": "0.1.4",
   "description": "Loaders utils",
-  "license": "UNLICENSED",
+  "license": "Apache-2.0",
   "scripts": {
     "build": "rimraf lib && babel --copy-files --no-babelrc --presets es2015,stage-0,react --plugins transform-decorators-legacy --ignore __tests__,*.spec.js,demo src/client/components --out-dir lib",
     "link-mode": "webpack --watch --config ./webpack.link.config.js",
@@ -19,15 +19,14 @@
     "lib",
     "README.md"
   ],
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/OpusCapitaBES/js-react-loaders"
-  },
+  "repository": "OpusCapita/react-loaders",
   "peerDependencies": {
     "react": "15.4.2",
     "react-dom": "15.4.2"
   },
   "devDependencies": {
+    "@opuscapita/react-showroom-client": "1.2.10",
+    "@opuscapita/react-showroom-server": "1.2.0",
     "autoprefixer": "6.4.1",
     "babel-cli": "6.5.1",
     "babel-core": "6.4.0",
@@ -51,8 +50,6 @@
     "less": "2.3.1",
     "less-loader": "2.2.2",
     "nodemon": "1.9.1",
-    "opuscapita-showroom-client": "1.1.0",
-    "opuscapita-showroom-server": "1.1.0",
     "postcss-loader": "0.13.0",
     "postcss-modules": "0.5.2",
     "raw-loader": "0.5.1",
@@ -65,8 +62,8 @@
     "write-file-webpack-plugin": "3.3.0"
   },
   "dependencies": {
+    "@opuscapita/npm-scripts": "1.0.8",
     "lodash": "4.17.4",
-    "opuscapita-npm-scripts": "1.0.6",
     "scriptjs": "2.5.8"
   }
 }

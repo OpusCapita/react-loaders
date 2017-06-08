@@ -19,7 +19,7 @@ app.use(function(req, res, next) {
 });
 
 let componentsRoot = path.resolve(__dirname, '../../../src/client/components');
-require('opuscapita-showroom-server').makeLocalScan(componentsRoot);
+require('@opuscapita/react-showroom-server').makeLocalScan(componentsRoot);
 
 let serverOptions = {
   watchOptions: {
