@@ -1,12 +1,10 @@
 # React loaders ![badge-npm-version](https://img.shields.io/npm/v/@opuscapita/react-loaders.svg) ![badge-license](https://img.shields.io/github/license/OpusCapita/react-loaders.svg)
 
-OpusCapita React Components (date inputs/pickers)
+Set of utility components to load React components and JS scripts remotely
 
 ## Demo and documentation
 
 Online demo and components reference available here: https://opuscapita.github.io/react-loaders
-
-** ! Need to demo load component candidates to demo works properly (coming soon in 20 minutes) **
 
 > Demo powered by [react-showroom](https://github.com/OpusCapitaBES/js-react-showroom-client)
 
