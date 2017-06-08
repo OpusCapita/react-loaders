@@ -5,7 +5,7 @@ mkdir .gh-pages-tmp &&
 node node_modules/webpack/bin/webpack.js --config ./webpack.docs.config.js &&
 cp -R lib/* .gh-pages-tmp &&
 cp -R src/server/demo/index.html .gh-pages-tmp &&
-cp -R src/server/demo/static/* && mkdir -p .gh-pages-tmp/static/components && .gh-pages-tmp/static/components &&
+cp -R mkdir -p .gh-pages-tmp/static/components && src/server/demo/static/* && .gh-pages-tmp/static/components &&
 cp -R src/server/demo/api .gh-pages-tmp &&
 
 git checkout gh-pages &&
