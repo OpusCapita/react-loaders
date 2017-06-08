@@ -23,9 +23,9 @@ On componentWillUnmount script DOM nodes will be deleted.
 ```jsx harmony
 <ScriptsLoaderContainer
   scripts={[
-    'http://localhost:3000/static/SupplierInput.js',
-    'http://localhost:3000/static/ClassificationInput.js'
-    ]}
+    '${location.hostname}/${location.pathname}/static/SupplierInput.js',
+    '${location.hostname}/${location.pathname}/static/ClassificationInput.js'
+  ]}
 >
 {() => (
   <div>
