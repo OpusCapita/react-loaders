@@ -5,8 +5,8 @@ mkdir .gh-pages-tmp &&
 node node_modules/webpack/bin/webpack.js --config ./webpack.docs.config.js &&
 cp -R lib/* .gh-pages-tmp &&
 cp -R src/server/demo/index.html .gh-pages-tmp &&
-cp -R src/server/static .gh-pages-tmp &&
-cp -R src/server/api .gh-pages-tmp &&
+cp -R src/server/demo/static .gh-pages-tmp &&
+cp -R src/server/demo/api .gh-pages-tmp &&
 
 git checkout gh-pages &&
 git ls-files | grep -v -e "\(^\.gitignore$\|^\.gitattributes$\|^\.gh-pages-tmp$\)" | xargs rm -rf &&
