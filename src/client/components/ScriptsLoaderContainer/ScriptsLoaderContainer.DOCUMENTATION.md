@@ -28,7 +28,7 @@ On componentWillUnmount script DOM nodes will be deleted.
 >
 {() => (
   <div>
-    <SupplierInput.default serviceRegistry={() => ({url: `${location.protocol}//${location.host}`})} />
+    <SupplierInput.default serviceRegistry={() => ({url: `${location.protocol}//${location.host}${location.pathname.slice(0, -1)}`})} />
   </div>
 )}
 </ScriptsLoaderContainer>
