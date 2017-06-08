@@ -11,26 +11,26 @@ On componentWillUnmount script DOM nodes will be deleted.
 
 ### Props Reference
 
-| Name                          | Type                  | Description                                                |
-| ------------------------------|:----------------------| -----------------------------------------------------------|
-| children | object or function | When passed **object** - default React behavior. <br/>If passed **function** - result of **function** execution will be rendered |
-| scripts | array | List of script URLs |
-| renderSpinner | func | You can specify custom spinner component `(scripts) => YourSpinnerComponent` |
-| renderError | func | You can specify custom error component `(scripts) => YourErrorComponent` |
+| Name                           | Type                    | Description                                                                                                                      |
+| ------------------------------ | :---------------------- | -----------------------------------------------------------                                                                      |
+| children                       | object or function      | When passed **object** - default React behavior. <br/>If passed **function** - result of **function** execution will be rendered |
+| scripts                        | array                   | List of script URLs                                                                                                              |
+| renderSpinner                  | func                    | You can specify custom spinner component `(scripts) => YourSpinnerComponent`                                                     |
+| renderError                    | func                    | You can specify custom error component `(scripts) => YourErrorComponent`                                                         |
 
 ### Code Example
 
 ```jsx harmony
 <ScriptsLoaderContainer
   scripts={[
-    '${location.hostname}/${location.pathname}/static/SupplierInput.js',
-    '${location.hostname}/${location.pathname}/static/ClassificationInput.js'
+    `http://${location.host}${location.pathname}static/SupplierInput.js`,
+    `http://${location.host}${location.pathname}static/ClassificationInput.js`
   ]}
 >
 {() => (
   <div>
-    <SupplierInput.default serviceRegistry={() => ({url: 'localhost:3000'})} />
-    <ClassificationInput.default serviceRegistry={() => ({url: 'localhost:3000'})} />
+    <SupplierInput.default serviceRegistry={() => ({url: `${location.host}`})} />
+    <ClassificationInput.default serviceRegistry={() => ({url: `${location.host}`})} />
   </div>
 )}
 </ScriptsLoaderContainer>
