@@ -14,14 +14,6 @@ Online demo and components reference available here: https://opuscapita.github.i
 
 `npm install @opuscapita/react-loaders`
 
-## Date format
-
-* `dd` - day
-* `MM` - month
-* `yy` - year
-
-Any separators except these allowed: `1`, `a`, `A`, `*`, `#`
-
 ## Contributors
 
 | [<img src="https://avatars.githubusercontent.com/u/24603787?v=3" width="100px;"/>](https://github.com/asergeev-sc) | [**Alexey Sergeev**](https://github.com/asergeev-sc)     |
