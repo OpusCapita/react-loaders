@@ -1,4 +1,11 @@
 
+Release 0.1.5 Thu Jun 08 2017 13:11:52 GMT+0300 (+03)
+=======================================================
+
+ - Set publishConfig to global npmjs.org (Kirill Volkovich <volkovich@scand.com>, Thu Jun 8 13:11:31 2017 +0300)
+ - Fix webpack development config (Kirill Volkovich <volkovich@scand.com>, Thu Jun 8 13:06:29 2017 +0300)
+ - Updating to a version to  0.1.5 (Kirill Volkovich <volkovich@scand.com>, Thu Jun 8 13:06:12 2017 +0300)
+
 Release 0.1.4 Thu Jun 08 2017 13:06:00 GMT+0300 (+03)
 =======================================================
 
