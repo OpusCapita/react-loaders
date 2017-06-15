@@ -14,13 +14,13 @@ class ScriptsLoaderContainer extends Component {
   }
 
   componentDidMount() {
-    this.initScriptsLoader(this.props.scripts);
+    this.initScriptsLoader(this.props.scripts, this.props.sync);
   }
 
   componentWillReceiveProps(nextProps) {
     if (!isEqual(this.props.scripts, nextProps.scripts)) {
       this.scriptsLoader.destroy();
-      this.initScriptsLoader(nextProps.scripts);
+      this.initScriptsLoader(nextProps.scripts, nextProps.sync);
     }
   }
 
@@ -28,8 +28,8 @@ class ScriptsLoaderContainer extends Component {
     this.scriptsLoader.destroy();
   }
 
-  initScriptsLoader(urls) {
-    this.scriptsLoader = new ScriptsLoader(urls, this.handleSuccess.bind(this), this.handleError.bind(this));
+  initScriptsLoader(urls, sync) {
+    this.scriptsLoader = new ScriptsLoader(urls, this.handleSuccess.bind(this), this.handleError.bind(this), sync);
     this.setState({
       isLoading: true,
       isSuccess: false,
@@ -58,6 +58,8 @@ class ScriptsLoaderContainer extends Component {
       children,
       renderSpinner,
       renderError,
+      scripts,
+      sync,
       ...restProps
     } = this.props;
 
@@ -84,10 +86,12 @@ class ScriptsLoaderContainer extends Component {
 ScriptsLoaderContainer.propTypes = {
   renderSpinner: PropTypes.func,
   renderError: PropTypes.func,
-  scripts: PropTypes.array
+  scripts: PropTypes.array,
+  sync: PropTypes.bool
 };
 ScriptsLoaderContainer.defaultProps = {
   renderSpinner: () => (<span>Loading ...</span>),
   renderError: () => (<span>Error ...</span>),
-  scripts: []
+  scripts: [],
+  sync: false
 };

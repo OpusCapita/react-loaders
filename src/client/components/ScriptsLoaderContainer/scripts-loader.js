@@ -1,6 +1,11 @@
-function getDOMNode(url) {
+function getDOMNode(url, sync) {
   let DOMNode = document.createElement('script');
   DOMNode.src = url;
+    console.log(DOMNode);
+  if (sync) {
+    DOMNode.setAttribute('async', 'false');
+  }
+
   document.head.appendChild(DOMNode);
   return DOMNode;
 }
@@ -13,8 +18,8 @@ function getLoaderPromise(DOMNode, resolve, reject) {
 }
 
 export default
-function ScriptsLoader(urls = [], onSuccess, onFail) {
-  this.DOMNodes = urls.map(url => getDOMNode(url));
+function ScriptsLoader(urls = [], onSuccess, onFail, sync = false) {
+  this.DOMNodes = urls.map(url => getDOMNode(url, sync));
   let promises = this.DOMNodes.map(DOMNode => getLoaderPromise(DOMNode, onSuccess, onFail));
   Promise.all(promises).then(onSuccess).catch(onFail);
 }
