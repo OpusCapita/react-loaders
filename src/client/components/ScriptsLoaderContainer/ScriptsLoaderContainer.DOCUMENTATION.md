@@ -17,6 +17,7 @@ On componentWillUnmount script DOM nodes will be deleted.
 | scripts                        | array                   | List of script URLs                                                                                                              |
 | renderSpinner                  | func                    | You can specify custom spinner component `(scripts) => YourSpinnerComponent`                                                     |
 | renderError                    | func                    | You can specify custom error component `(scripts) => YourErrorComponent`                                                         |
+| sync                           | bool                    | Force synchronous scripts loading. Default: `false`                                                                          |
 
 ### Code Example
 
@@ -25,6 +26,7 @@ On componentWillUnmount script DOM nodes will be deleted.
   scripts={[
     `${location.protocol}//${location.host}${location.pathname}static/components/SupplierInput.js`
   ]}
+  sync={true}
 >
 {() => (
   <div>
