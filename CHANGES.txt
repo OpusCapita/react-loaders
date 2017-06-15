@@ -1,10 +1,12 @@
 
+
 Release 0.1.6 Thu Jun 15 2017 16:16:27 GMT+0300 (+03)
 =======================================================
 
  - Merge pull request #2 from OpusCapita/issue/1
-    
+
      #1 Add 'sync' prop to 'ScriptsLoaderContainer' (fe5f1b9 43a3d03, Kirill Volkovich <kvolkovich-sc@users.noreply.github.com>)
+>>>>>>> e4706f726bb983ce7ef6da2273facb8be73dbb60
  - #1 Add 'sync' prop to 'ScriptsLoaderContainer' (Kirill Volkovich <volkovich@scand.com>, Thu Jun 15 16:14:47 2017 +0300)
  - Merge branch 'master' of opuscapita.github.com:OpusCapita/react-loaders (41acb33 3873ca1, Kirill Volkovich <volkovich@scand.com>)
  - Update docs (Kirill Volkovich <volkovich@scand.com>, Thu Jun 8 15:17:48 2017 +0300)
@@ -48,7 +50,7 @@ Release 0.1.4 Thu Jun 08 2017 13:06:00 GMT+0300 (+03)
  - Fix demo build (Kirill Volkovich <volkovich@scand.com>, Wed May 31 09:41:41 2017 +0300)
  - Add gh-pages-update.sh, webpack.docs.config.js (Kirill Volkovich <volkovich@scand.com>, Wed May 31 09:39:39 2017 +0300)
  - Minor demo page fix
-    
+
     Removed weird body padding style (Kirill Volkovich <volkovich@scand.com>, Mon Apr 3 17:03:29 2017 +0300)
  - Updating to a version to  0.1.4 (Dmitry Divin <divin@scand.com>, Thu Mar 23 11:55:11 2017 +0300)
 
@@ -83,7 +85,7 @@ Release 0.0.4 Wed Mar 15 2017 15:05:13 GMT+0300 (+03)
 =======================================================
 
  - Added serviceComponent
-    
+
     Moved from http://buildserver.jcatalog.com/git/js-react-user-info.git (Kirill Volkovich <volkovich@scand.com>, Wed Mar 15 15:00:39 2017 +0300)
  - Updated dependencies (Kirill Volkovich <volkovich@scand.com>, Wed Mar 15 14:03:56 2017 +0300)
  - Updated opuscapita-showroom version (Kirill Volkovich <volkovich@scand.com>, Thu Mar 2 17:03:33 2017 +0300)
@@ -101,7 +103,7 @@ Release 0.0.2 Wed Mar 01 2017 16:14:08 GMT+0300 (+03)
  - Added 'isLoading' state field to ScriptsLoaderContainer (Kirill Volkovich <volkovich@scand.com>, Wed Feb 22 16:12:58 2017 +0300)
  - Removed ScriptsLoader component (Kirill Volkovich <volkovich@scand.com>, Wed Feb 22 15:54:01 2017 +0300)
  - ScriptsLoaderContainer now use 'scripts-loader' function
-    
+
     Instead of ScriptsLoader component (Kirill Volkovich <volkovich@scand.com>, Tue Feb 21 18:48:58 2017 +0300)
  - Implemented scripts-loader function (Kirill Volkovich <volkovich@scand.com>, Tue Feb 21 18:48:44 2017 +0300)
  - Replaced Object.assign => lodash/assign for IE11 compatibility (Kirill Volkovich <volkovich@scand.com>, Tue Feb 21 15:23:30 2017 +0300)

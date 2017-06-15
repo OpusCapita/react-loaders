@@ -3,7 +3,7 @@ function getDOMNode(url, sync) {
   DOMNode.src = url;
     console.log(DOMNode);
   if (sync) {
-    DOMNode.setAttribute('async', 'false');
+    DOMNode.async = false;
   }
 
   document.head.appendChild(DOMNode);
