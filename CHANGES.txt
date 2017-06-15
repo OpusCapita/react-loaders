@@ -1,4 +1,14 @@
 
+Release 0.1.7 Thu Jun 15 2017 16:48:26 GMT+0300 (+03)
+=======================================================
+
+ - Merge pull request #3 from OpusCapita/issue/1
+    
+    Issue/1 (e4706f7 3564c46, Kirill Volkovich <kvolkovich-sc@users.noreply.github.com>)
+ - Merge branch 'master' of opuscapita.github.com:OpusCapita/react-loaders into issue/1 (e3c25fe e4706f7, Kirill Volkovich <volkovich@scand.com>)
+ - #1 Fix set 'async' attribute (Kirill Volkovich <volkovich@scand.com>, Thu Jun 15 16:45:19 2017 +0300)
+ - Updating to a version to  0.1.7 (Kirill Volkovich <volkovich@scand.com>, Thu Jun 15 16:16:39 2017 +0300)
+
 
 Release 0.1.6 Thu Jun 15 2017 16:16:27 GMT+0300 (+03)
 =======================================================
