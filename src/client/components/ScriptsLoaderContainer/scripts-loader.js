@@ -1,7 +1,6 @@
 function getDOMNode(url, sync) {
   let DOMNode = document.createElement('script');
   DOMNode.src = url;
-    console.log(DOMNode);
   if (sync) {
     DOMNode.async = false;
   }
