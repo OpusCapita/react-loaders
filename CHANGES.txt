@@ -1,4 +1,11 @@
 
+Release 0.1.8 Thu Jun 22 2017 12:04:46 GMT+0300 (+03)
+=======================================================
+
+ - Downgrade lodash version for consistency across modules (Kirill Volkovich <volkovich@scand.com>, Thu Jun 22 12:03:34 2017 +0300)
+ - Update scripts-loader.js (Kirill Volkovich <kvolkovich-sc@users.noreply.github.com>, Fri Jun 16 12:12:32 2017 +0300)
+ - Updating to a version to  0.1.8 (Kirill Volkovich <volkovich@scand.com>, Thu Jun 15 16:48:38 2017 +0300)
+
 Release 0.1.7 Thu Jun 15 2017 16:48:26 GMT+0300 (+03)
 =======================================================
 
