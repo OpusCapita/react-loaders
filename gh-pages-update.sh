@@ -8,7 +8,8 @@ cp -R src/server/demo/index.html .gh-pages-tmp &&
 cp -R src/server/demo/static .gh-pages-tmp &&
 cp -R src/server/demo/api .gh-pages-tmp &&
 
-git checkout gh-pages &&
+git branch -d gh-pages &&
+git checkout -b gh-pages &&
 git ls-files | grep -v -e "\(^\.gitignore$\|^\.gitattributes$\|^\.gh-pages-tmp$\)" | xargs rm -rf &&
 rm -rf ./api ./static &&
 mv .gh-pages-tmp/* . &&
