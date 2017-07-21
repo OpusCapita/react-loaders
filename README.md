@@ -1,4 +1,9 @@
-# React loaders ![badge-npm-version](https://img.shields.io/npm/v/@opuscapita/react-loaders.svg) ![badge-license](https://img.shields.io/github/license/OpusCapita/react-loaders.svg)
+# React loaders !
+
+[![CircleCI Status](https://circleci.com/gh/OpusCapita/react-loaders/tree/master.svg?style=shield&circle-token=:circle-token)](https://circleci.com/gh/OpusCapita/react-loaders)
+![badge-npm-version](https://img.shields.io/npm/v/@opuscapita/react-loaders.svg) 
+[![NPM Downloads](https://img.shields.io/npm/dm/@opuscapita/react-loaders.svg)](https://npmjs.org/package/@opuscapita/react-loaders)
+![badge-license](https://img.shields.io/github/license/OpusCapita/react-loaders.svg)
 
 Set of utility components to load React components and JS scripts remotely
 
