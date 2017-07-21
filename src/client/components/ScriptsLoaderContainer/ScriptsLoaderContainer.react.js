@@ -58,8 +58,8 @@ class ScriptsLoaderContainer extends Component {
       children,
       renderSpinner,
       renderError,
-      scripts,
-      sync,
+      scripts, // eslint-disable-line no-unused-vars
+      sync, // eslint-disable-line no-unused-vars
       ...restProps
     } = this.props;
 
