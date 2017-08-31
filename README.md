@@ -11,7 +11,7 @@ Set of utility components to load React components and JS scripts remotely
 
 Online demo and components reference available here: https://opuscapita.github.io/react-loaders
 
-> Demo powered by [react-showroom](https://github.com/OpusCapitaBES/js-react-showroom-client)
+> Demo powered by [react-showroom](https://github.com/OpusCapita/react-showroom-client)
 
 ## Installation
 
