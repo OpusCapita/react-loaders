@@ -1,4 +1,14 @@
 
+Release 0.1.9 Mon Sep 18 2017 16:05:05 GMT+0300 (+03)
+=======================================================
+
+ - (#5) fixing load components (Dmitry Divin <divin@scand.com>, Mon Sep 18 16:02:57 2017 +0300)
+ - Update README.md (Alexey Sergeev <asergeev-sc@users.noreply.github.com>, Thu Aug 31 22:47:06 2017 +0300)
+ - Fix eslint warnings (baliunov <baliunov@scand.com>, Fri Jul 21 13:58:43 2017 +0300)
+ - Add CircleCI (baliunov <baliunov@scand.com>, Fri Jul 21 13:49:36 2017 +0300)
+ - Update gh-pages-update.sh (Kirill Volkovich <kvolkovich-sc@users.noreply.github.com>, Wed Jul 12 15:03:15 2017 +0300)
+ - Updating to a version to  0.1.9 (Kirill Volkovich <volkovich@scand.com>, Thu Jun 22 12:04:58 2017 +0300)
+
 Release 0.1.8 Thu Jun 22 2017 12:04:46 GMT+0300 (+03)
 =======================================================
 
