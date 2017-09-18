@@ -19,10 +19,9 @@ export default function({ serviceName, jsFileName, moduleName, componentPath, se
     };
 
     getLoadedComponent = () => {
-      const module = window[moduleName].default;
-      let loadedComponent = module;
+      let loadedComponent = window[moduleName].default;
       if (componentPath) {
-        loadedComponent = get(module, componentPath);
+        loadedComponent = get(window[moduleName], componentPath);
       }
 
       return loadedComponent;

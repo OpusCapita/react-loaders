@@ -7,7 +7,8 @@ const host = require('../../../clientConfig').host;
 const path = require('path');
 const port = require('../../../clientConfig').port;
 const webpack = require('webpack');
-const compiler = webpack(require('../../../webpack.development.config'));
+const devConfig = require('../../../webpack.development.config');
+const staticResourcesConfig = require('../../../webpack.resources.config');
 
 const app = express();
 
@@ -31,7 +32,11 @@ let serverOptions = {
 };
 
 app.use(compression());
-app.use(require('webpack-dev-middleware')(compiler, serverOptions));
+app.use(require('webpack-dev-middleware')(webpack(devConfig), serverOptions));
+app.use(require('webpack-dev-middleware')(webpack(staticResourcesConfig), {
+  ...serverOptions,
+  publicPath: '/static/components/',
+}));
 
 app.get('/', function(req, res) {
   res.sendFile(path.normalize(__dirname + '/index.html'));

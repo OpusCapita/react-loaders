@@ -27,16 +27,22 @@ Where `options` as props
 {(() => {
 // Example start
 
-  let serviceRegistry = (service) => ({ url: `${location.protocol}//${location.host}${location.pathname.slice(0, -1)}` });  
-  let SupplierInput = serviceComponent({ serviceRegistry, serviceName: 'supplier', moduleName: 'SupplierInput' });
-  
+  let serviceRegistry = (service) => ({ url: `${location.protocol}//${location.host}` });
+  //load from default export
+  let TextInput = serviceComponent({ serviceRegistry, serviceName: 'demo', moduleName: 'TextInput' });
+  //load from export
+  let DateInput = serviceComponent({ serviceRegistry, serviceName: 'demo', moduleName: 'Dates', componentPath: 'DateInput' });
+
   return (
-    <SupplierInput
-      serviceRegistry={serviceRegistry}
-      value={{}}
-      onChange={() => console.log('onChange!')}
-      disabled={false}
-    />
+    <div>
+      <div className="form-group">
+        <TextInput/>
+      </div>
+
+      <div className="form-group">
+        <DateInput/>
+      </div>
+    </div>
   );
 // Example end
 })()}
