@@ -1,4 +1,5 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import ScriptsLoader from './scripts-loader.js';
 import isEqual from 'lodash/isEqual';
 
