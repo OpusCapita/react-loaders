@@ -1,4 +1,11 @@
 
+Release 1.0.1 Mon Dec 18 2017 16:30:06 GMT+0300 (+03)
+=======================================================
+
+ - Updating SupplierInput for demo page usage. (Dmitriy Sanko <dsanko@scand.com>, Mon Dec 18 16:28:11 2017 +0300)
+ - Updating the way of I18nManager is created. (Dmitriy Sanko <dsanko@scand.com>, Mon Dec 18 16:22:43 2017 +0300)
+ - Updating to a version to  1.0.1 (Kirill Volkovich <kirill.volkovich@jcatalog.com>, Fri Dec 15 15:19:47 2017 +0300)
+
 Release 1.0.0 Fri Dec 15 2017 15:19:33 GMT+0300 (+03)
 =======================================================
 
