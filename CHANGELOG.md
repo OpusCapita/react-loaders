@@ -1,4 +1,12 @@
 
+Release 1.0.4 Wed Apr 04 2018 13:34:37 GMT+0000 (UTC)
+=======================================================
+
+- Fixed build config. [ci skip] (Dmitry Shienok dshienok@scand.com, 2018-04-04 16:31:31 +0300)
+- Updated build config. (Dmitry Shienok dshienok@scand.com, 2018-04-04 16:21:56 +0300)
+- Updated package.json scripts. (Dmitry Shienok dshienok@scand.com, 2018-04-04 16:18:02 +0300)
+- Updated build config. (Dmitry Shienok dshienok@scand.com, 2018-04-04 16:10:53 +0300)
+
 Release 1.0.3 Wed Apr 04 2018 15:59:33 GMT+0300 (Belarus Standard Time)
 =======================================================
 
