@@ -11,8 +11,8 @@
     "prepublish": "npm run build",
     "start": "nodemon --watch src/server src/server/demo/index --exec babel-node --presets es2015,stage-0,react --plugins babel-plugin-transform-decorators-legacy",
     "npm-build": "rimraf lib && babel --copy-files --no-babelrc --presets es2015,stage-0,react --plugins transform-object-assign,transform-decorators-legacy --ignore __tests__,*.spec.js,demo src/client --out-dir lib",
-    "npm-publish": "npm run npm-build && npm-publish",
-    "publish-release": "npm run npm-publish -- --release"
+    "npm-publish": "npm run npm-build && npm publish",
+    "publish-release": "npm run npm-publish"
   },
   "main": "lib/index.js",
   "files": [
