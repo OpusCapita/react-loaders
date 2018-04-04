@@ -49,7 +49,7 @@ jobs:
 #      - store_test_results:
 #          path: test-results.xml
 
-  build_release::
+  build_release:
     <<: *defaults
     steps:
       - run:
