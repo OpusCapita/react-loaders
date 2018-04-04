@@ -1,29 +1,38 @@
+defaults: &defaults
+  docker:
+    - image: opuscapita/minsk-core-ci:grails-2.4.4-jdk-8u131-nodejs-8.9.4-maven-3.3.9
+  working_directory: ~/build
+
 version: 2
 jobs:
   build:
-    docker:
-      - image: circleci/node:6
-    working_directory: ~/repo
+    <<: *defaults
     steps:
+      - run:
+          name: Environment inject.
+          command: env_inject.sh
+
       - checkout
+
       - restore_cache:
           keys:
-          - v1-dependencies-{{ checksum "package.json" }}
-          # fallback to using the latest cache if no exact match is found
-          - v1-dependencies-
+            - loaders-{{ .Branch }}-{{ checksum "package.json" }}
+            - loaders-{{ .Branch }}
+            - loaders
 
       - run:
-          name: install-dependencies
+          name: "Installing dependencies."
           command: yarn install
 
       - save_cache:
+          key: loaders-{{ .Branch }}-{{ checksum "package.json" }}
           paths:
-            - node_modules
-          key: v1-dependencies-{{ checksum "package.json" }}
+              - ./node_modules
+              - ./yarn.lock
 
       - run:
-          name: lint
-          command: npm run lint
+          name: "Running lint."
+          command: npm start lint
 
 #      - run:
 #          name: test
@@ -39,3 +48,70 @@ jobs:
 #
 #      - store_test_results:
 #          path: test-results.xml
+
+  build_release::
+    <<: *defaults
+    steps:
+      - run:
+          name: Environment inject.
+          command: env_inject.sh
+
+      - checkout
+
+      - restore_cache:
+          keys:
+            - loaders-{{ .Branch }}-{{ checksum "package.json" }}
+            - loaders-{{ .Branch }}
+            - loaders
+
+      - run:
+          name: "Installing dependencies."
+          command: yarn install
+
+      - save_cache:
+          key: loaders-{{ .Branch }}-{{ checksum "package.json" }}
+          paths:
+              - ./node_modules
+              - ./yarn.lock
+
+      - run:
+          name: "Running lint."
+          command: npm start lint
+
+      - run:
+          name: "Deploy."
+          command: npm start publish-release
+
+  release:
+    <<: *defaults
+    steps:
+
+      - run:
+          name: Environment inject
+          command: env_inject.sh
+
+      - checkout
+
+      - run:
+          name: Executing release scrtipt.
+          command: .circleci/release.sh
+workflows:
+  version: 2
+  release-and-build:
+    jobs:
+      - release:
+          filters:
+            branches:
+              only: release
+      - build:
+          filters:
+            branches:
+              ignore:
+                - gh-pages
+                - release
+      - build_release:
+          filters:
+            tags:
+              only: /.*/
+            branches:
+              ignore: /.*/
