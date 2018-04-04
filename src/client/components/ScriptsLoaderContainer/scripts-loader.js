@@ -1,3 +1,5 @@
+import Promise from 'core-js/library/es6/promise';
+
 function getDOMNode(url, sync) {
   let DOMNode = document.createElement('script');
   DOMNode.src = url;

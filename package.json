@@ -69,6 +69,7 @@
   },
   "dependencies": {
     "@opuscapita/npm-scripts": "1.0.8",
+    "core-js": "2.5.4",
     "lodash": "4.17.2",
     "prop-types": "15.6.0",
     "scriptjs": "2.5.8"
