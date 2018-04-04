@@ -32,7 +32,7 @@ jobs:
 
       - run:
           name: "Running lint."
-          command: npm start lint
+          command: npm run lint
 
 #      - run:
 #          name: test
@@ -49,7 +49,7 @@ jobs:
 #      - store_test_results:
 #          path: test-results.xml
 
-  build_release::
+  build_release:
     <<: *defaults
     steps:
       - run:
@@ -76,11 +76,11 @@ jobs:
 
       - run:
           name: "Running lint."
-          command: npm start lint
+          command: npm run lint
 
       - run:
           name: "Deploy."
-          command: npm start publish-release
+          command: npm run publish-release
 
   release:
     <<: *defaults
