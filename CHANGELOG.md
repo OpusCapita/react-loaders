@@ -1,4 +1,10 @@
 
+Release 1.0.5 Thu Apr 26 2018 14:01:46 GMT+0000 (UTC)
+=======================================================
+
+- Merge pull request [#8](https://github.com/OpusCapita/react-loaders/issues/8) from OpusCapita/issue-7-configurable-path-prefix (GitHub 31243790+estambakio-sc@users.noreply.github.com, 2018-04-26 16:32:32 +0300)
+- Added jsFilePathPrefix prop (Egor Stambakio stambakio@scand.com, 2018-04-26 16:14:53 +0300)
+
 Release 1.0.4 Wed Apr 04 2018 13:34:37 GMT+0000 (UTC)
 =======================================================
 
