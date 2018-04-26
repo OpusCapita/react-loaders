@@ -12,7 +12,15 @@ import get from 'lodash/get';
  * @param serviceRegistry - service registry
  * @param inProgressComponent - spinner element. will be shown while component not loaded yet.
  */
-export default function({ serviceName, jsFileName, moduleName, componentPath, serviceRegistry, inProgressComponent }) {
+export default function({
+  serviceName,
+  jsFileName,
+  moduleName,
+  componentPath,
+  serviceRegistry,
+  inProgressComponent,
+  jsFilePathPrefix = '/static/components/'
+}) {
   return class extends React.Component {
     state = {
       loadedComponent: null
@@ -31,7 +39,7 @@ export default function({ serviceName, jsFileName, moduleName, componentPath, se
       if (window[moduleName]) {
         this.setState({ loadedComponent: this.getLoadedComponent() });
       } else {
-        scriptjs(serviceRegistry(serviceName).url + `/static/components/${jsFileName || moduleName}.js`, () => {
+        scriptjs(serviceRegistry(serviceName).url + `${jsFilePathPrefix}${jsFileName || moduleName}.js`, () => {
           this.setState({ loadedComponent: this.getLoadedComponent() });
         });
       }

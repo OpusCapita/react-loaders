@@ -14,6 +14,7 @@ Where `options` as props
 | serviceName                    | string                  | Service name (for service registry)                               |
 | jsFileName                     | string                  | Path to file loaded script name (by default used moduleName)      |
 | componentPath                  | string                  | Component path on module                                          |
+| jsFilePathPrefix               | string                  | Path between `serviceRegistry(service).url` and filename. Default is `/static/components/`. |
 
 #### URL compilation for example
 
