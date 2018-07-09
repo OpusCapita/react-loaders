@@ -1,4 +1,13 @@
 
+[Release 1.1.0](https://github.com/OpusCapita/react-loaders/releases/tag/v1.1.0) Mon Jul 09 2018 14:09:55 GMT+0300 (MSK)
+=======================================================
+
+- Minor fix (Egor Stambakio stambakio@scand.com, 2018-07-09 14:05:16 +0300)
+- Merge pull request [#10](https://github.com/OpusCapita/react-loaders/issues/10) from OpusCapita/issue-9 (GitHub 31243790+estambakio-sc@users.noreply.github.com, 2018-07-09 14:02:41 +0300)
+- Fixed according to review [#9](https://github.com/OpusCapita/react-loaders/issues/9) (Egor Stambakio stambakio@scand.com, 2018-07-09 14:00:29 +0300)
+- Added cache for loaded urls [#9](https://github.com/OpusCapita/react-loaders/issues/9) (Egor Stambakio stambakio@scand.com, 2018-07-09 12:51:41 +0300)
+- Adding an issue template file [ci skip] (Egor Stambakio egor.stambakio@opuscapita.com, 2018-05-02 12:26:16 +0300)
+
 Release 1.0.5 Thu Apr 26 2018 14:01:46 GMT+0000 (UTC)
 =======================================================
 
