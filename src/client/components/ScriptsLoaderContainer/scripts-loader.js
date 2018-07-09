@@ -14,14 +14,16 @@ const getDOMNode = (url, sync) => {
   return DOMNode;
 }
 
+const markScriptAsLoaded = (DOMNode, callback) => _ => {
+  // prevent non-unique urls caused by racing conditions
+  if (notLoaded(DOMNode.src)) {
+    loadedScripts.push(DOMNode.src);
+  }
+  callback();
+}
+
 const loadScript = DOMNode => new Promise((resolve, reject) => {
-  DOMNode.addEventListener('load', _ => {
-    // prevent non-unique urls caused by racing conditions
-    if (notLoaded(DOMNode.src)) {
-      loadedScripts.push(DOMNode.src);
-    }
-    resolve();
-  });
+  DOMNode.addEventListener('load', markScriptAsLoaded(DOMNode, resolve));
   DOMNode.addEventListener('error', reject);
   document.head.appendChild(DOMNode);
 });
@@ -40,7 +42,6 @@ export default class ScriptsLoader {
 
   destroy() {
     this.DOMNodes.map(DOMNode => {
-      // TBD @estambakio-sc: don't know if it's really needed
       document.head.removeChild(DOMNode);
     });
   }
