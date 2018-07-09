@@ -1,6 +1,6 @@
 {
   "disabled": false,
-  "url": "http://test.jcatalog.com/demo-app/demo",
+  "url": "http://localhost:8080/jcdemo",
   "login": "jcadmin",
   "password": "jcadmin",
   "language": "en"

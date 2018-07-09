@@ -22,18 +22,25 @@ On componentWillUnmount script DOM nodes will be deleted.
 ### Code Example
 
 ```jsx harmony
-<ScriptsLoaderContainer
-  scripts={[
-    `${location.protocol}//${location.host}${location.pathname}static/components/SupplierInput.js`
-  ]}
-  sync={true}
->
-{() => (
-  <div>
-    <SupplierInput.default serviceRegistry={() => ({url: `${location.protocol}//${location.host}${location.pathname.slice(0, -1)}`})} />
-  </div>
-)}
-</ScriptsLoaderContainer>
+{
+  _scope.state.load ?
+    (
+      <ScriptsLoaderContainer
+        scripts={[
+          `${location.protocol}//${location.host}${location.pathname}static/components/SupplierInput.js`
+        ]}
+        sync={true}
+      >
+      {() => (
+        <div>
+          <SupplierInput.default serviceRegistry={() => ({url: `${location.protocol}//${location.host}${location.pathname.slice(0, -1)}`})} />
+        </div>
+      )}
+      </ScriptsLoaderContainer>
+    ) :
+    (<div>'hey!'</div>)
+}
+
 ```
 
 ### Component Name
