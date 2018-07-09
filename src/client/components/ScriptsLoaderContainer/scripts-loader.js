@@ -14,16 +14,16 @@ const getDOMNode = (url, sync) => {
   return DOMNode;
 }
 
-const markScriptAsLoaded = (DOMNode, callback) => _ => {
+const markScriptAsLoaded = (src, callback) => _ => {
   // prevent non-unique urls caused by racing conditions
-  if (notLoaded(DOMNode.src)) {
-    loadedScripts.push(DOMNode.src);
+  if (notLoaded(src)) {
+    loadedScripts.push(src);
   }
   callback();
 }
 
 const loadScript = DOMNode => new Promise((resolve, reject) => {
-  DOMNode.addEventListener('load', markScriptAsLoaded(DOMNode, resolve));
+  DOMNode.addEventListener('load', markScriptAsLoaded(DOMNode.src, resolve));
   DOMNode.addEventListener('error', reject);
   document.head.appendChild(DOMNode);
 });
