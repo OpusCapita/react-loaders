@@ -1,34 +1,47 @@
 import Promise from 'core-js/library/es6/promise';
 
-function getDOMNode(url, sync) {
-  let DOMNode = document.createElement('script');
+// cache for loaded urls
+const loadedScripts = [];
+
+const notLoaded = url => loadedScripts.indexOf(url) === -1;
+
+const getDOMNode = (url, sync) => {
+  const DOMNode = document.createElement('script');
   DOMNode.src = url;
   if (sync) {
     DOMNode.async = false;
   }
-
-  document.head.appendChild(DOMNode);
   return DOMNode;
 }
 
-function getLoaderPromise(DOMNode, resolve, reject) {
-  return new Promise(function(resolve, reject) {
-    DOMNode.addEventListener('load', resolve);
-    DOMNode.addEventListener('error', reject);
+const loadScript = DOMNode => new Promise((resolve, reject) => {
+  DOMNode.addEventListener('load', _ => {
+    // prevent non-unique urls caused by racing conditions
+    if (notLoaded(DOMNode.src)) {
+      loadedScripts.push(DOMNode.src);
+    }
+    resolve();
   });
-}
+  DOMNode.addEventListener('error', reject);
+  document.head.appendChild(DOMNode);
+});
 
-export default
-function ScriptsLoader(urls = [], onSuccess, onFail, sync = false) {
-  this.DOMNodes = urls.map(url => getDOMNode(url, sync));
-  let promises = this.DOMNodes.map(DOMNode => getLoaderPromise(DOMNode, onSuccess, onFail));
-  Promise.all(promises).then(onSuccess).catch(onFail);
-}
+export default class ScriptsLoader {
+  constructor(urls = [], onSuccess, onFail, sync = false) {
+    this.DOMNodes = urls.
+      filter(notLoaded).
+      map(url => getDOMNode(url, sync));
 
-ScriptsLoader.prototype.destroy = function(onSuccess, onFail) {
-  this.DOMNodes.map(DOMNode => {
-    DOMNode.removeEventListener('load', onSuccess);
-    DOMNode.removeEventListener('error', onFail);
-    document.head.removeChild(DOMNode);
-  });
-};
+    Promise.
+      all(this.DOMNodes.map(loadScript)).
+      then(onSuccess).
+      catch(onFail);
+  }
+
+  destroy() {
+    this.DOMNodes.map(DOMNode => {
+      // TBD @estambakio-sc: don't know if it's really needed
+      document.head.removeChild(DOMNode);
+    });
+  }
+}

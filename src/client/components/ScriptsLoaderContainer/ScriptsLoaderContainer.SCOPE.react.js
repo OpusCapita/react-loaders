@@ -5,6 +5,9 @@ import { I18nManager } from '@opuscapita/i18n';
 
 @showroomScopeDecorator
 class ScriptsLoaderContainerScope extends Component {
+  state = {
+    load: true
+  }
 
   getChildContext() {
     if (!this.context.i18n) {
@@ -13,9 +16,12 @@ class ScriptsLoaderContainerScope extends Component {
     return { i18n: this.context.i18n };
   }
 
+  handleClick = _ => this.setState(ps => ({ load: !ps.load }));
+
   render() {
     return (
       <div>
+        <button onClick={this.handleClick}>Toggle</button>
         {this._renderChildren()}
       </div>
     )
