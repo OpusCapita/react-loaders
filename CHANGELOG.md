@@ -1,4 +1,10 @@
 
+[Release 1.1.1](https://github.com/OpusCapita/react-loaders/releases/tag/v1.1.1) Mon Jul 09 2018 14:33:13 GMT+0300 (MSK)
+=======================================================
+
+- Merge branch 'master' of github.com:OpusCapita/react-loaders (Egor Stambakio stambakio@scand.com, 2018-07-09 14:31:29 +0300)
+- Fixed build commands (Egor Stambakio stambakio@scand.com, 2018-07-09 14:31:19 +0300)
+
 [Release 1.1.0](https://github.com/OpusCapita/react-loaders/releases/tag/v1.1.0) Mon Jul 09 2018 14:09:55 GMT+0300 (MSK)
 =======================================================
 
