@@ -13,11 +13,19 @@ jobs:
     docker:
       - image: opuscapita/minsk-core-machineuser-env:2
     steps:
-      - run: circle_ci_add_env.sh GH_MAIL GH_NAME
+      - run: generate_bash_env_exports.sh CIRCLE_CI_TOKEN > ~/generated_bash_env
+      - persist_to_workspace:
+          root: ~/
+          paths:
+            - generated_bash_env
+ GH_MAIL GH_NAME
 
   build:
     <<: *defaults
     steps:
+      - attach_workspace:
+          at: /workspace
+      - run: cat /workspace/generated_bash_env >> $BASH_ENV
       - checkout
 
       - restore_cache:
@@ -60,6 +68,9 @@ jobs:
   build_release:
     <<: *defaults
     steps:
+      - attach_workspace:
+          at: /workspace
+      - run: cat /workspace/generated_bash_env >> $BASH_ENV
       - checkout
 
       - restore_cache:
@@ -91,6 +102,9 @@ jobs:
   release:
     <<: *defaults
     steps:
+      - attach_workspace:
+          at: /workspace
+      - run: cat /workspace/generated_bash_env >> $BASH_ENV
       - checkout
       - run:
           name: Executing release scrtipt.
@@ -111,7 +125,9 @@ workflows:
           requires:
             - init
           post-steps:
-            - jira/notify
+            - jira/notify:
+                token_name: "CIRCLE_CI_TOKEN"
+
       - build:
           filters:
             branches:
@@ -121,7 +137,9 @@ workflows:
           requires:
             - init
           post-steps:
-            - jira/notify
+            - jira/notify:
+                token_name: "CIRCLE_CI_TOKEN"
+
       - build_release:
           filters:
             tags:
@@ -131,4 +149,6 @@ workflows:
           requires:
             - init
           post-steps:
-            - jira/notify
+            - jira/notify:
+                token_name: "CIRCLE_CI_TOKEN"
+
